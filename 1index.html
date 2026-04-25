@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctor Fittings – Precision Fittings for Window Excellence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1e2a6e;
+      --navy-dark: #16205a;
+      --gold: #f5a623;
+      --gold-light: #ffc94d;
+      --white: #ffffff;
+      --light-bg: #f4f6fb;
+      --text-dark: #1a1a2e;
+      --text-muted: #5a6080;
+      --border: #e2e6f0;
+      --card-shadow: 0 2px 16px rgba(30,42,110,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.95rem;
+      padding: 6px 16px;
+      border-radius: 6px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-links .active {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 600;
+      border-radius: 20px;
+      padding: 6px 20px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      padding: 64px 48px 72px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245,166,35,0.15);
+      border: 1px solid rgba(245,166,35,0.35);
+      color: var(--gold);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 0.03em;
+    }
+
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span { color: var(--gold); }
+
+    .hero p {
+      color: rgba(255,255,255,0.7);
+      font-size: 1rem;
+      max-width: 480px;
+      margin-bottom: 32px;
+      line-height: 1.65;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 12px 26px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 12px 26px;
+      border-radius: 6px;
+      border: 1.5px solid rgba(255,255,255,0.45);
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.07); }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+    }
+
+    .stat-value {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--white);
+    }
+
+    .stat-value.gold { color: var(--gold); }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 2px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-image {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #2d3a7a 0%, #1a2560 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-image-placeholder {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    /* Interior SVG illustration */
+    .hero-interior {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 80px 48px; }
+
+    .section-title {
+      text-align: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-bottom: 48px;
+    }
+
+    /* ── WHY US ── */
+    .why-us { background: var(--white); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 22px;
+      box-shadow: var(--card-shadow);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .feature-card:hover { box-shadow: 0 8px 32px rgba(30,42,110,0.14); transform: translateY(-3px); }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 16px;
+      color: var(--navy);
+      opacity: 0.75;
+    }
+
+    .feature-card h3 {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── INDUSTRY ── */
+    .industry { background: var(--light-bg); }
+
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .industry-card {
+      background: var(--navy);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .industry-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #2d3a8a 0%, #1e2a6e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .industry-img svg {
+      opacity: 0.25;
+      width: 72px;
+      height: 72px;
+      color: var(--gold);
+    }
+
+    .industry-body {
+      padding: 24px;
+    }
+
+    .industry-body h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .industry-body p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 16px;
+      line-height: 1.55;
+    }
+
+    .key-apps-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .key-apps-list {
+      list-style: none;
+    }
+
+    .key-apps-list li {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.7);
+      padding: 2px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .key-apps-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ── PRODUCTS ── */
+    .products { background: var(--white); }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto 36px;
+    }
+
+    .product-card {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .product-card:hover { box-shadow: 0 8px 28px rgba(30,42,110,0.13); transform: translateY(-2px); }
+
+    .product-card.highlighted { border-color: var(--gold); }
+
+    .product-img {
+      background: linear-gradient(135deg, #e8ecf8, #d4daf0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-img svg {
+      width: 52px;
+      height: 52px;
+      color: var(--navy);
+      opacity: 0.35;
+    }
+
+    .product-body {
+      padding: 20px 20px 16px;
+    }
+
+    .product-body h3 {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .product-body p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .spec-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .spec-text {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .btn-gold-sm {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 8px 18px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-gold-sm:hover { background: var(--gold-light); }
+
+    .products-cta {
+      text-align: center;
+    }
+
+    .btn-navy {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 14px 32px;
+      border-radius: 7px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-navy:hover { background: var(--navy-dark); transform: translateY(-1px); }
+
+    /* ── QUALITY ── */
+    .quality {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      padding: 64px 48px;
+    }
+
+    .quality .section-title { color: var(--white); margin-bottom: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0f1640;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 24px 48px;
+      font-size: 0.82rem;
+    }
+
+    /* ── SPLASH SCREEN ── */
+    .splash-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease;
+    }
+    .splash-screen.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .splash-screen img {
+      height: 40px;
+    }
+
+    /* ── NAV LOGO IMG ── */
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+    .nav-logo-img {
+      height: 34px;
+      width: auto;
+    }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 101;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2.5px;
+      background: var(--white);
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 99;
+    }
+    .nav-overlay.open { display: block; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-image { display: none; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .industry-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
+      .hamburger { display: block; }
+      .nav-links {
+        position: fixed;
+        top: 0; right: -280px;
+        width: 260px; height: 100vh;
+        background: var(--navy-dark);
+        flex-direction: column;
+        padding: 80px 24px 24px;
+        gap: 4px;
+        transition: right 0.3s ease;
+        box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+        z-index: 100;
+      }
+      .nav-links.open { right: 0; }
+      .nav-links a { display: block; padding: 12px 16px; font-size: 1rem; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 20px; }
+      section { padding: 56px 20px; }
+      .hero { padding: 48px 20px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 24px; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- SPLASH SCREEN -->
+<div class="splash-screen" id="splashScreen">
+  <img src="dr.fitting-small copy.png" alt="Doctor Fittings">
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="dr.fitting-small copy.png" alt="Doctor Fittings" class="nav-logo-img">
+    Doctor Fittings
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">✦ Trusted by 1000+ Window Manufacturers</div>
+    <h1>Precision Fittings for<br><span>Window Excellence</span></h1>
+    <p>Premium hardware solutions engineered specifically for window manufacturing, glazing, and installation professionals. ISO certified quality with unmatched precision and durability.</p>
+    <div class="hero-buttons">
+      <a href="products.html" class="btn-primary">Browse Catalogue</a>
+      <a href="contact.html" class="btn-outline">Request Quote</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-value">25+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-value">500+</div>
+        <div class="stat-label">Product Range</div>
+      </div>
+      <div>
+        <div class="stat-value gold">99.8%</div>
+        <div class="stat-label">Quality Rate</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-image">
+    <!-- Stylized interior illustration -->
+    <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" class="hero-interior">
+      <rect width="480" height="360" fill="#1a2560"/>
+      <!-- Floor -->
+      <rect x="0" y="260" width="480" height="100" fill="#1e2a6a" opacity="0.7"/>
+      <!-- Wall panels / large windows -->
+      <rect x="20" y="30" width="90" height="240" rx="3" fill="#2a3680" stroke="#3a4890" stroke-width="1"/>
+      <rect x="30" y="40" width="70" height="105" rx="2" fill="#263070" opacity="0.6"/>
+      <rect x="30" y="155" width="70" height="105" rx="2" fill="#263070" opacity="0.6"/>
+      <rect x="120" y="30" width="90" height="240" rx="3" fill="#2a3680" stroke="#3a4890" stroke-width="1"/>
+      <rect x="130" y="40" width="70" height="105" rx="2" fill="#263070" opacity="0.6"/>
+      <rect x="130" y="155" width="70" height="105" rx="2" fill="#263070" opacity="0.6"/>
+      <rect x="220" y="30" width="90" height="240" rx="3" fill="#2a3680" stroke="#3a4890" stroke-width="1"/>
+      <rect x="230" y="40" width="70" height="105" rx="2" fill="#263070" opacity="0.6"/>
+      <rect x="230" y="155" width="70" height="105" rx="2" fill="#263070" opacity="0.6"/>
+      <rect x="320" y="30" width="90" height="240" rx="3" fill="#2a3680" stroke="#3a4890" stroke-width="1"/>
+      <rect x="330" y="40" width="70" height="105" rx="2" fill="#263070" opacity="0.6"/>
+      <rect x="330" y="155" width="70" height="105" rx="2" fill="#263070" opacity="0.6"/>
+      <rect x="420" y="30" width="50" height="240" rx="3" fill="#2a3680" stroke="#3a4890" stroke-width="1"/>
+      <!-- Lighting -->
+      <ellipse cx="160" cy="10" rx="18" ry="6" fill="#f5a623" opacity="0.7"/>
+      <line x1="160" y1="16" x2="160" y2="60" stroke="#f5a623" stroke-width="1" opacity="0.3"/>
+      <ellipse cx="300" cy="10" rx="18" ry="6" fill="#f5a623" opacity="0.7"/>
+      <line x1="300" y1="16" x2="300" y2="60" stroke="#f5a623" stroke-width="1" opacity="0.3"/>
+      <!-- Floor reflection -->
+      <rect x="0" y="270" width="480" height="90" fill="url(#floorGrad)"/>
+      <defs>
+        <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#263070" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#1a2560" stop-opacity="0.1"/>
+        </linearGradient>
+      </defs>
+      <!-- Furniture silhouette -->
+      <rect x="60" y="220" width="160" height="50" rx="4" fill="#1e2860"/>
+      <rect x="80" y="200" width="40" height="22" rx="3" fill="#222f75"/>
+      <rect x="135" y="205" width="65" height="17" rx="3" fill="#222f75"/>
+      <!-- Overlay warm glow -->
+      <ellipse cx="420" cy="130" rx="80" ry="140" fill="#f5a623" opacity="0.04"/>
+    </svg>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us">
+  <h2 class="section-title">Why Window Manufacturers Choose Us</h2>
+  <p class="section-sub">Engineered for the specific demands of window manufacturing and installation</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <svg class="feature-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+      </svg>
+      <h3>Precision Engineering</h3>
+      <p>CNC machined components with tolerances up to ±0.01mm for perfect window assembly integration.</p>
+    </div>
+    <div class="feature-card">
+      <svg class="feature-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      <h3>Corrosion Resistant</h3>
+      <p>Stainless steel and brass fittings designed to withstand moisture and environmental exposure.</p>
+    </div>
+    <div class="feature-card">
+      <svg class="feature-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+      </svg>
+      <h3>Custom Solutions</h3>
+      <p>Tailored fitting designs for unique window frame configurations and installation requirements.</p>
+    </div>
+    <div class="feature-card">
+      <svg class="feature-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+      </svg>
+      <h3>Bulk Ordering</h3>
+      <p>Competitive pricing for high-volume orders with guaranteed on-time delivery schedules.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRY -->
+<section class="industry">
+  <h2 class="section-title">Industry Applications</h2>
+  <p class="section-sub">Specialized solutions for diverse sectors</p>
+  <div class="industry-grid">
+
+    <div class="industry-card">
+      <div class="industry-img">
+        <svg fill="none" stroke="#f5a623" stroke-width="1.2" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/>
+        </svg>
+      </div>
+      <div class="industry-body">
+        <h3>Window Manufacturing</h3>
+        <p>Specialized fittings for UPVC, aluminum, and wooden window frame assembly and installation.</p>
+        <div class="key-apps-label">Key Applications:</div>
+        <ul class="key-apps-list">
+          <li>Frame Connectors</li>
+          <li>Hinge Systems</li>
+          <li>Lock Mechanisms</li>
+          <li>Drainage Solutions</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="industry-card">
+      <div class="industry-img">
+        <svg fill="none" stroke="#f5a623" stroke-width="1.2" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M15 21V9"/>
+        </svg>
+      </div>
+      <div class="industry-body">
+        <h3>Glass &amp; Glazing</h3>
+        <p>Secure mounting hardware and sealing solutions for commercial and residential glazing projects.</p>
+        <div class="key-apps-label">Key Applications:</div>
+        <ul class="key-apps-list">
+          <li>Glass Clamps</li>
+          <li>Mounting Brackets</li>
+          <li>Sealing Strips</li>
+          <li>Edge Protectors</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="industry-card">
+      <div class="industry-img">
+        <svg fill="none" stroke="#f5a623" stroke-width="1.2" viewBox="0 0 24 24">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </div>
+      <div class="industry-body">
+        <h3>Construction</h3>
+        <p>Heavy-duty fittings for large-scale commercial building and residential construction projects.</p>
+        <div class="key-apps-label">Key Applications:</div>
+        <ul class="key-apps-list">
+          <li>Structural Brackets</li>
+          <li>Wall Anchors</li>
+          <li>Expansion Joints</li>
+          <li>Support Systems</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products">
+  <h2 class="section-title">Featured Products</h2>
+  <p class="section-sub">Premium hardware engineered for window professionals</p>
+  <div class="products-grid">
+
+    <div class="product-card">
+      <div class="product-img">
+        <svg fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+          <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <h3>Window Frame Connectors</h3>
+        <p>High-strength corner connectors and joining brackets for seamless window frame assembly.</p>
+        <div class="spec-label">Specifications</div>
+        <div class="spec-text">Material: Stainless Steel 304 | Load Capacity: 500kg | Finish: Polished</div>
+        <a href="products.html" class="btn-gold-sm">View Details</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <svg fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+          <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <h3>Hinge &amp; Hardware Sets</h3>
+        <p>Complete hinge systems with friction stays and restrictor mechanisms for tilt &amp; turn windows.</p>
+        <div class="spec-label">Specifications</div>
+        <div class="spec-text">Material: Zinc Alloy | Cycle Life: 50,000+ | Coating: Powder Coated</div>
+        <a href="products.html" class="btn-gold-sm">View Details</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <svg fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <h3>Drainage Fittings</h3>
+        <p>Precision-engineered drainage channels and weep hole covers for window water management.</p>
+        <div class="spec-label">Specifications</div>
+        <div class="spec-text">Material: UPVC | Flow Rate: 15L/min | UV Resistant: Yes</div>
+        <a href="products.html" class="btn-gold-sm">View Details</a>
+      </div>
+    </div>
+
+    <div class="product-card highlighted">
+      <div class="product-img">
+        <svg fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <h3>Sealing &amp; Gaskets</h3>
+        <p>Weather-resistant EPDM rubber seals and gaskets for optimal thermal and acoustic insulation.</p>
+        <div class="spec-label">Specifications</div>
+        <div class="spec-text">Material: EPDM | Temperature: -40°C to +120°C | Shore Hardness: 60A</div>
+        <a href="products.html" class="btn-gold-sm">View Details</a>
+      </div>
+    </div>
+
+  </div>
+  <div class="products-cta">
+    <a href="products.html" class="btn-navy">View Complete Catalogue →</a>
+  </div>
+</section>
+
+<!-- QUALITY -->
+<section class="quality">
+  <h2 class="section-title">Certified Quality Standards</h2>
+</section>
+
+<footer>
+  &copy; 2024 Doctor Fittings. All rights reserved.
+</footer>
+
+<script>
+  // Splash screen - 5 seconds
+  setTimeout(function() {
+    document.getElementById('splashScreen').classList.add('fade-out');
+    setTimeout(function() {
+      document.getElementById('splashScreen').style.display = 'none';
+    }, 600);
+  }, 5000);
+
+  // Hamburger menu toggle
+  var hamburger = document.getElementById('hamburger');
+  var navLinks = document.getElementById('navLinks');
+  var navOverlay = document.getElementById('navOverlay');
+
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('open');
+    navOverlay.classList.toggle('open');
+  });
+
+  navOverlay.addEventListener('click', function() {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('open');
+    navOverlay.classList.remove('open');
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('open');
+      navOverlay.classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>

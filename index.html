@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctor Fittings – Precision Fittings for Window Excellence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1e2a6e;
+      --navy-dark: #16205a;
+      --gold: #f5a623;
+      --gold-light: #ffc94d;
+      --white: #ffffff;
+      --light-bg: #f4f6fb;
+      --text-dark: #1a1a2e;
+      --text-muted: #5a6080;
+      --border: #e2e6f0;
+      --card-shadow: 0 2px 16px rgba(30,42,110,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-logo-img {
+      height: 40px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.95rem;
+      padding: 6px 16px;
+      border-radius: 6px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-links .active {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 600;
+      border-radius: 20px;
+      padding: 6px 20px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      padding: 64px 48px 72px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245,166,35,0.15);
+      border: 1px solid rgba(245,166,35,0.35);
+      color: var(--gold);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 0.03em;
+    }
+
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span { color: var(--gold); }
+
+    .hero p {
+      color: rgba(255,255,255,0.7);
+      font-size: 1rem;
+      max-width: 480px;
+      margin-bottom: 32px;
+      line-height: 1.65;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 12px 26px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 12px 26px;
+      border-radius: 6px;
+      border: 1.5px solid rgba(255,255,255,0.45);
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.07); }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+    }
+
+    .stat-value {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--white);
+    }
+
+    .stat-value.gold { color: var(--gold); }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 2px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-image {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #2d3a7a 0%, #1a2560 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-image-placeholder {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    /* Interior SVG illustration */
+    .hero-interior {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 80px 48px; }
+
+    .section-title {
+      text-align: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-bottom: 48px;
+    }
+
+    /* ── WHY US ── */
+    .why-us { background: var(--white); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 22px;
+      box-shadow: var(--card-shadow);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .feature-card:hover { box-shadow: 0 8px 32px rgba(30,42,110,0.14); transform: translateY(-3px); }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 16px;
+      color: var(--navy);
+      opacity: 0.75;
+    }
+
+    .feature-card h3 {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── INDUSTRY ── */
+    .industry { background: var(--light-bg); }
+
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .industry-card {
+      background: var(--navy);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .industry-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #2d3a8a 0%, #1e2a6e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .industry-img svg {
+      opacity: 0.25;
+      width: 72px;
+      height: 72px;
+      color: var(--gold);
+    }
+
+    .industry-body {
+      padding: 24px;
+    }
+
+    .industry-body h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .industry-body p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 16px;
+      line-height: 1.55;
+    }
+
+    .key-apps-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .key-apps-list {
+      list-style: none;
+    }
+
+    .key-apps-list li {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.7);
+      padding: 2px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .key-apps-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ── PRODUCTS ── */
+    .products { background: var(--white); }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto 36px;
+    }
+
+    .product-card {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .product-card:hover { box-shadow: 0 8px 28px rgba(30,42,110,0.13); transform: translateY(-2px); }
+
+    .product-card.highlighted { border-color: var(--gold); }
+
+    .product-img {
+      background: linear-gradient(135deg, #e8ecf8, #d4daf0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-img svg {
+      width: 52px;
+      height: 52px;
+      color: var(--navy);
+      opacity: 0.35;
+    }
+
+    .product-body {
+      padding: 20px 20px 16px;
+    }
+
+    .product-body h3 {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .product-body p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .spec-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .spec-text {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .btn-gold-sm {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 8px 18px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-gold-sm:hover { background: var(--gold-light); }
+
+    .products-cta {
+      text-align: center;
+    }
+
+    .btn-navy {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 14px 32px;
+      border-radius: 7px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-navy:hover { background: var(--navy-dark); transform: translateY(-1px); }
+
+    /* ── QUALITY ── */
+    .quality {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      padding: 64px 48px;
+    }
+
+    .quality .section-title { color: var(--white); margin-bottom: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0f1640;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 24px 48px;
+      font-size: 0.82rem;
+    }
+
+    /* ── QUALITY / CERTS ── */
+    .quality {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      padding: 72px 48px;
+    }
+
+    .cert-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .cert-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 28px 18px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .cert-card:hover { background: rgba(255,255,255,0.11); }
+
+    .cert-icon-wrap {
+      width: 52px;
+      height: 52px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+    }
+
+    .cert-icon-wrap svg {
+      width: 24px;
+      height: 24px;
+      color: var(--navy);
+    }
+
+    .cert-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--white);
+      margin-bottom: 5px;
+    }
+
+    .cert-desc {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      background: var(--white);
+      padding: 80px 48px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testi-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      box-shadow: var(--card-shadow);
+      transition: box-shadow 0.2s, transform 0.2s;
+      background: var(--white);
+    }
+
+    .testi-card:hover { box-shadow: 0 8px 28px rgba(30,42,110,0.12); transform: translateY(-3px); }
+
+    .testi-stars {
+      color: var(--gold);
+      font-size: 1rem;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .testi-quote {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+
+    .testi-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 14px;
+    }
+
+    .testi-author {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+
+    .testi-role {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .testi-company {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    /* ── QR / CATALOGUE SECTION ── */
+    .catalogue-section {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .catalogue-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .catalogue-left {
+      padding: 64px 48px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .catalogue-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .catalogue-heading {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .catalogue-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+      margin-bottom: 24px;
+    }
+
+    .catalogue-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 32px;
+    }
+
+    .catalogue-features strong {
+      color: var(--white);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .btn-gold-catalogue {
+      display: inline-flex;
+      align-items: center;
+      height: 48px;
+      padding: 0 28px;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-gold-catalogue:hover { background: var(--gold-light); }
+
+    .catalogue-right {
+      padding: 64px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qr-wrapper {
+      text-align: center;
+    }
+
+    .qr-box {
+      display: inline-grid;
+      place-items: center;
+      width: 200px;
+      height: 200px;
+      background: var(--white);
+      border-radius: 4px;
+      padding: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+
+    .qr-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .qr-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-top: 20px;
+    }
+
+    .qr-link {
+      display: block;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 8px;
+      word-break: break-all;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .qr-link:hover { color: rgba(255,255,255,0.75); }
+
+    @media (max-width: 900px) {
+      .catalogue-grid { grid-template-columns: 1fr; }
+      .catalogue-left { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 48px 20px; }
+      .catalogue-right { padding: 48px 20px; }
+      .catalogue-features { grid-template-columns: 1fr; gap: 16px; }
+    }
+
+    /* ── STICKY SCROLL / GOLD THEATRE ── */
+    .gold-stage {
+      position: relative;
+      height: 500vh;
+    }
+
+    .gold-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      background-color: white;
+      transition: background-color 0.2s linear;
+    }
+
+    .gold-inner {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 48px;
+      align-items: center;
+      height: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .gold-text-block {
+      max-width: 420px;
+      transition: color 0.3s;
+    }
+
+    .gold-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 20px;
+    }
+
+    .gold-heading {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+
+    .gold-divider {
+      height: 1px;
+      background: currentColor;
+      opacity: 0.15;
+      margin-bottom: 20px;
+    }
+
+    .gold-desc {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      opacity: 0.8;
+    }
+
+    .gold-sub {
+      font-size: 0.88rem;
+      opacity: 0.55;
+      margin-top: 16px;
+    }
+
+    .gold-track-area {
+      height: 460px;
+      display: flex;
+      align-items: center;
+    }
+
+    .gold-track-wrap {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .gold-track {
+      display: flex;
+      gap: 24px;
+      will-change: transform;
+    }
+
+    .gold-card {
+      background: var(--white);
+      border: 1px solid rgba(30,42,110,0.15);
+      padding: 32px;
+      min-width: 340px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      transition: box-shadow 0.3s;
+    }
+
+    .gold-card:hover { box-shadow: 0 16px 48px rgba(30,42,110,0.12); }
+
+    .gold-card-img {
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--light-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+
+    .gold-card-img svg {
+      width: 64px;
+      height: 64px;
+      color: var(--navy);
+      opacity: 0.3;
+    }
+
+    .gold-card-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--navy);
+      opacity: 0.5;
+      margin-bottom: 4px;
+    }
+
+    .gold-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .gold-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .gold-stage { height: auto !important; }
+      .gold-sticky { position: relative !important; height: auto !important; background: var(--gold) !important; }
+      .gold-inner { grid-template-columns: 1fr; padding: 48px 20px; gap: 32px; }
+      .gold-track { flex-direction: column; transform: none !important; }
+      .gold-card { min-width: 100%; }
+      .gold-track-area { height: auto; }
+    }
+
+    /* ── CTA BANNER ── */
+    .cta-banner-section {
+      background: var(--navy);
+      text-align: center;
+      padding: 72px 48px;
+    }
+
+    .cta-banner-section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+
+    .cta-banner-section p {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.97rem;
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .btn-gold-cta {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 13px 28px;
+      border-radius: 7px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-gold-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    .btn-outline-cta {
+      background: transparent;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.92rem;
+      padding: 13px 28px;
+      border-radius: 7px;
+      border: 1.5px solid rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline-cta:hover { border-color: var(--white); background: rgba(255,255,255,0.07); }
+
+    .cta-contact-line {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.5);
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── SITE FOOTER ── */
+    .site-footer {
+      background: #0f1640;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 56px 48px 48px;
+    }
+
+    .footer-brand .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 14px;
+    }
+
+    .footer-brand p {
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+      max-width: 220px;
+    }
+
+    .footer-col h4 {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--white);
+      margin-bottom: 14px;
+      letter-spacing: 0.02em;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover { color: var(--gold); }
+
+    .footer-col .contact-list li {
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+      padding: 20px 48px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-image { display: none; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .industry-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
+      .cert-cards { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 20px; }
+      section { padding: 56px 20px; }
+      .hero { padding: 48px 20px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 24px; flex-wrap: wrap; }
+      .cert-cards { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .cta-banner-section { padding: 56px 20px; }
+      .quality { padding: 56px 20px; }
+      .testimonials { padding: 56px 20px; }
+      .footer-top { grid-template-columns: 1fr; padding: 40px 20px; }
+      .footer-bottom { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="doctor-fitting-boxed-logo.png" alt="Doctor Fittings" class="nav-logo-img" />
+  </div>
+  <ul class="nav-links">
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="#">Products</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">✦ Trusted by 1000+ Window Manufacturers</div>
+    <h1>Precision Fittings for<br><span>Window Excellence</span></h1>
+    <p>Premium hardware solutions engineered specifically for window manufacturing, glazing, and installation professionals. ISO certified quality with unmatched precision and durability.</p>
+    <div class="hero-buttons">
+      <a href="#" class="btn-primary">Browse Catalogue</a>
+      <a href="#" class="btn-outline">Request Quote</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-value">25+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-value">500+</div>
+        <div class="stat-label">Product Range</div>
+      </div>
+      <div>
+        <div class="stat-value gold">99.8%</div>
+        <div class="stat-label">Quality Rate</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-image">
+    <!-- Stylized interior illustration -->
+    <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" class="hero-interior">
+      <rect width="480" height="360" fill="#1a2560"/>
+      <!-- Floor -->
+      <rect x="0" y="260" width="480" height="100" fill="#1e2a6a" opacity="0.7"/>
+      <!-- Wall panels / large windows -->
+      <rect x="20" y="30" width="90" height="240" rx="3" fill="#2a3680" stroke="#3a4890" stroke-width="1"/>
+      <rect x="30" y="40" width="70" height="105" rx="2" fill="#263070" opacity="0.6"/>
+      <rect x="30" y="155" width="70" height="105" rx="2" fill="#263070" opacity="0.6"/>
+      <rect x="120" y="30" width="90" height="240" rx="3" fill="#2a3680" stroke="#3a4890" stroke-width="1"/>
+      <rect x="130" y="40" width="70" height="105" rx="2" fill="#263070" opacity="0.6"/>
+      <rect x="130" y="155" width="70" height="105" rx="2" fill="#263070" opacity="0.6"/>
+      <rect x="220" y="30" width="90" height="240" rx="3" fill="#2a3680" stroke="#3a4890" stroke-width="1"/>
+      <rect x="230" y="40" width="70" height="105" rx="2" fill="#263070" opacity="0.6"/>
+      <rect x="230" y="155" width="70" height="105" rx="2" fill="#263070" opacity="0.6"/>
+      <rect x="320" y="30" width="90" height="240" rx="3" fill="#2a3680" stroke="#3a4890" stroke-width="1"/>
+      <rect x="330" y="40" width="70" height="105" rx="2" fill="#263070" opacity="0.6"/>
+      <rect x="330" y="155" width="70" height="105" rx="2" fill="#263070" opacity="0.6"/>
+      <rect x="420" y="30" width="50" height="240" rx="3" fill="#2a3680" stroke="#3a4890" stroke-width="1"/>
+      <!-- Lighting -->
+      <ellipse cx="160" cy="10" rx="18" ry="6" fill="#f5a623" opacity="0.7"/>
+      <line x1="160" y1="16" x2="160" y2="60" stroke="#f5a623" stroke-width="1" opacity="0.3"/>
+      <ellipse cx="300" cy="10" rx="18" ry="6" fill="#f5a623" opacity="0.7"/>
+      <line x1="300" y1="16" x2="300" y2="60" stroke="#f5a623" stroke-width="1" opacity="0.3"/>
+      <!-- Floor reflection -->
+      <rect x="0" y="270" width="480" height="90" fill="url(#floorGrad)"/>
+      <defs>
+        <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#263070" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#1a2560" stop-opacity="0.1"/>
+        </linearGradient>
+      </defs>
+      <!-- Furniture silhouette -->
+      <rect x="60" y="220" width="160" height="50" rx="4" fill="#1e2860"/>
+      <rect x="80" y="200" width="40" height="22" rx="3" fill="#222f75"/>
+      <rect x="135" y="205" width="65" height="17" rx="3" fill="#222f75"/>
+      <!-- Overlay warm glow -->
+      <ellipse cx="420" cy="130" rx="80" ry="140" fill="#f5a623" opacity="0.04"/>
+    </svg>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us">
+  <h2 class="section-title">Why Window Manufacturers Choose Us</h2>
+  <p class="section-sub">Engineered for the specific demands of window manufacturing and installation</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <svg class="feature-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+      </svg>
+      <h3>Precision Engineering</h3>
+      <p>CNC machined components with tolerances up to ±0.01mm for perfect window assembly integration.</p>
+    </div>
+    <div class="feature-card">
+      <svg class="feature-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      <h3>Corrosion Resistant</h3>
+      <p>Stainless steel and brass fittings designed to withstand moisture and environmental exposure.</p>
+    </div>
+    <div class="feature-card">
+      <svg class="feature-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+      </svg>
+      <h3>Custom Solutions</h3>
+      <p>Tailored fitting designs for unique window frame configurations and installation requirements.</p>
+    </div>
+    <div class="feature-card">
+      <svg class="feature-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+      </svg>
+      <h3>Bulk Ordering</h3>
+      <p>Competitive pricing for high-volume orders with guaranteed on-time delivery schedules.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY SCROLL / GOLD THEATRE -->
+<section class="gold-stage" id="gold-stage">
+  <div class="gold-sticky" id="gold-sticky">
+    <div class="gold-inner">
+      <!-- Left Text -->
+      <div>
+        <div class="gold-text-block" id="gold-text">
+          <div class="gold-label">Signature Range</div>
+          <h2 class="gold-heading">Engineered in metal. Proven on site.</h2>
+          <div class="gold-divider"></div>
+          <p class="gold-desc">The Doctor Fittings range is specified by India's leading system houses. From 25mm slim sliders to heavy-duty casements, each component is machined for zero-play assembly and sustained torque.</p>
+          <p class="gold-sub">Trusted by top fabricators and architects across 22 states.</p>
+        </div>
+      </div>
+
+      <!-- Right Track -->
+      <div class="gold-track-area">
+        <div class="gold-track-wrap" id="gold-track-wrap">
+          <div class="gold-track" id="gold-track">
+            <!-- Card 1 -->
+            <div class="gold-card">
+              <div class="gold-card-img">
+                <svg fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+                  <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+                  <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+                </svg>
+              </div>
+              <div class="gold-card-label">DF-FC-01</div>
+              <h3>Window Frame Connectors</h3>
+              <p>High-strength corner connectors for seamless window frame assembly.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="gold-card">
+              <div class="gold-card-img">
+                <svg fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+                  <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </div>
+              <div class="gold-card-label">DF-HH-02</div>
+              <h3>Hinge &amp; Hardware Sets</h3>
+              <p>Complete hinge systems with friction stays for tilt &amp; turn windows.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="gold-card">
+              <div class="gold-card-img">
+                <svg fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <div class="gold-card-label">DF-SR-03</div>
+              <h3>Sliding Rollers</h3>
+              <p>Double-bearing, silent glide rollers for 25-34 series profiles.</p>
+            </div>
+            <!-- Card 4 -->
+            <div class="gold-card">
+              <div class="gold-card-img">
+                <svg fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/>
+                </svg>
+              </div>
+              <div class="gold-card-label">DF-DF-04</div>
+              <h3>Drainage Fittings</h3>
+              <p>Precision drainage channels and weep hole covers for water management.</p>
+            </div>
+            <!-- Card 5 -->
+            <div class="gold-card">
+              <div class="gold-card-img">
+                <svg fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>
+                </svg>
+              </div>
+              <div class="gold-card-label">DF-SG-05</div>
+              <h3>Sealing &amp; Gaskets</h3>
+              <p>Weather-resistant EPDM rubber seals for thermal and acoustic insulation.</p>
+            </div>
+            <!-- Card 6 -->
+            <div class="gold-card">
+              <div class="gold-card-img">
+                <svg fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+                  <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+                </svg>
+              </div>
+              <div class="gold-card-label">DF-LK-06</div>
+              <h3>Multi-Point Locks</h3>
+              <p>Heavy-duty locking mechanisms for enhanced security across profiles.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRY -->
+<section class="industry">
+  <h2 class="section-title">Industry Applications</h2>
+  <p class="section-sub">Specialized solutions for diverse sectors</p>
+  <div class="industry-grid">
+
+    <div class="industry-card">
+      <div class="industry-img">
+        <svg fill="none" stroke="#f5a623" stroke-width="1.2" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/>
+        </svg>
+      </div>
+      <div class="industry-body">
+        <h3>Window Manufacturing</h3>
+        <p>Specialized fittings for UPVC, aluminum, and wooden window frame assembly and installation.</p>
+        <div class="key-apps-label">Key Applications:</div>
+        <ul class="key-apps-list">
+          <li>Frame Connectors</li>
+          <li>Hinge Systems</li>
+          <li>Lock Mechanisms</li>
+          <li>Drainage Solutions</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="industry-card">
+      <div class="industry-img">
+        <svg fill="none" stroke="#f5a623" stroke-width="1.2" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M15 21V9"/>
+        </svg>
+      </div>
+      <div class="industry-body">
+        <h3>Glass &amp; Glazing</h3>
+        <p>Secure mounting hardware and sealing solutions for commercial and residential glazing projects.</p>
+        <div class="key-apps-label">Key Applications:</div>
+        <ul class="key-apps-list">
+          <li>Glass Clamps</li>
+          <li>Mounting Brackets</li>
+          <li>Sealing Strips</li>
+          <li>Edge Protectors</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="industry-card">
+      <div class="industry-img">
+        <svg fill="none" stroke="#f5a623" stroke-width="1.2" viewBox="0 0 24 24">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </div>
+      <div class="industry-body">
+        <h3>Construction</h3>
+        <p>Heavy-duty fittings for large-scale commercial building and residential construction projects.</p>
+        <div class="key-apps-label">Key Applications:</div>
+        <ul class="key-apps-list">
+          <li>Structural Brackets</li>
+          <li>Wall Anchors</li>
+          <li>Expansion Joints</li>
+          <li>Support Systems</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products">
+  <h2 class="section-title">Featured Products</h2>
+  <p class="section-sub">Premium hardware engineered for window professionals</p>
+  <div class="products-grid">
+
+    <div class="product-card">
+      <div class="product-img">
+        <svg fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+          <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <h3>Window Frame Connectors</h3>
+        <p>High-strength corner connectors and joining brackets for seamless window frame assembly.</p>
+        <div class="spec-label">Specifications</div>
+        <div class="spec-text">Material: Stainless Steel 304 | Load Capacity: 500kg | Finish: Polished</div>
+        <a href="#" class="btn-gold-sm">View Details</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <svg fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+          <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <h3>Hinge &amp; Hardware Sets</h3>
+        <p>Complete hinge systems with friction stays and restrictor mechanisms for tilt &amp; turn windows.</p>
+        <div class="spec-label">Specifications</div>
+        <div class="spec-text">Material: Zinc Alloy | Cycle Life: 50,000+ | Coating: Powder Coated</div>
+        <a href="#" class="btn-gold-sm">View Details</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <svg fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <h3>Drainage Fittings</h3>
+        <p>Precision-engineered drainage channels and weep hole covers for window water management.</p>
+        <div class="spec-label">Specifications</div>
+        <div class="spec-text">Material: UPVC | Flow Rate: 15L/min | UV Resistant: Yes</div>
+        <a href="#" class="btn-gold-sm">View Details</a>
+      </div>
+    </div>
+
+    <div class="product-card highlighted">
+      <div class="product-img">
+        <svg fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <h3>Sealing &amp; Gaskets</h3>
+        <p>Weather-resistant EPDM rubber seals and gaskets for optimal thermal and acoustic insulation.</p>
+        <div class="spec-label">Specifications</div>
+        <div class="spec-text">Material: EPDM | Temperature: -40°C to +120°C | Shore Hardness: 60A</div>
+        <a href="#" class="btn-gold-sm">View Details</a>
+      </div>
+    </div>
+
+  </div>
+  <div class="products-cta">
+    <a href="#" class="btn-navy">View Complete Catalogue →</a>
+  </div>
+</section>
+
+<!-- QUALITY / CERTIFICATIONS -->
+<section class="quality">
+  <h2 class="section-title" style="color:var(--white);">Certified Quality Standards</h2>
+  <p class="section-sub" style="color:rgba(255,255,255,0.6); margin-bottom:40px;">Internationally recognized certifications ensuring the highest quality</p>
+  <div class="cert-cards">
+    <div class="cert-card">
+      <div class="cert-icon-wrap">
+        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="cert-name">ISO 9001:2015</div>
+      <div class="cert-desc">Quality Management System</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon-wrap">
+        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="cert-name">CE Certified</div>
+      <div class="cert-desc">European Conformity Standards</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon-wrap">
+        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="cert-name">EN 12608</div>
+      <div class="cert-desc">Window Hardware Standards</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon-wrap">
+        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="cert-name">DIN Compliant</div>
+      <div class="cert-desc">German Industrial Norms</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <h2 class="section-title">What Our Clients Say</h2>
+  <p class="section-sub">Trusted by industry leaders across the globe</p>
+  <div class="testimonials-grid">
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Doctor Fittings has been our trusted supplier for over 5 years. Their precision hardware has significantly reduced our assembly time and warranty claims."</p>
+      <div class="testi-divider"></div>
+      <div class="testi-author">James Mitchell</div>
+      <div class="testi-role">Production Manager</div>
+      <div class="testi-company">Premium Windows Ltd.</div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"The quality of their stainless steel fittings is unmatched. We've never had a single failure in over 10,000 installations."</p>
+      <div class="testi-divider"></div>
+      <div class="testi-author">Sarah Chen</div>
+      <div class="testi-role">Technical Director</div>
+      <div class="testi-company">Urban Glass Solutions</div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Reliable delivery schedules and exceptional technical support. They understand the demands of large-scale construction projects."</p>
+      <div class="testi-divider"></div>
+      <div class="testi-author">Robert Davidson</div>
+      <div class="testi-role">Procurement Head</div>
+      <div class="testi-company">BuildRight Construction</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- QR CODE / CATALOGUE -->
+<section class="catalogue-section">
+  <div class="catalogue-grid">
+    <div class="catalogue-left">
+      <div class="catalogue-label">Specifier Portal</div>
+      <h2 class="catalogue-heading">Instant specifier access. Scan for complete technical catalogue.</h2>
+      <div class="catalogue-divider"></div>
+      <div class="catalogue-features">
+        <div><strong>CAD &amp; BIM</strong>DWG, STP, Revit families</div>
+        <div><strong>Test Reports</strong>Cycles, load, corrosion</div>
+        <div><strong>Finishes</strong>Anodized, PVD, powder coat</div>
+      </div>
+      <a href="https://drive.google.com/drive/folders/1DZJ4haopjHEj3-1tf9YuOLYRf5p4hlSk?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-gold-catalogue">Download Full Catalogue</a>
+    </div>
+    <div class="catalogue-right">
+      <div class="qr-wrapper">
+        <a href="https://drive.google.com/drive/folders/1DZJ4haopjHEj3-1tf9YuOLYRf5p4hlSk?usp=sharing" target="_blank" rel="noopener noreferrer" class="qr-box">
+          <img src="AkshWebDesigns-1024.png" alt="Catalogue QR Code" />
+        </a>
+        <div class="qr-label">Scan for Catalogue</div>
+        <a href="https://drive.google.com/drive/folders/1DZJ4haopjHEj3-1tf9YuOLYRf5p4hlSk?usp=sharing" target="_blank" rel="noopener noreferrer" class="qr-link">drive.google.com/drive/folders/1DZJ4haopjHEj3-1tf9YuOLYRf5p4hlSk</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner-section">
+  <h2>Ready to Elevate Your Window Manufacturing?</h2>
+  <p>Partner with Doctor Fittings for precision hardware that meets the highest industry standards. Request a quote or schedule a consultation with our technical team.</p>
+  <div class="cta-buttons">
+    <a href="contact.html" class="btn-gold-cta">Request a Quote</a>
+    <a href="products.html" class="btn-outline-cta">Download Catalogue</a>
+  </div>
+  <div class="cta-contact-line">
+    <span>📞 +1 (555) 123-4567</span>
+    <span>|</span>
+    <span>✉️ sales@doctorfittings.com</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="doctor-fitting-boxed-logo.png" alt="Doctor Fittings" style="height:38px;width:auto;" />
+      </div>
+      <p>Premium quality fittings for all your industrial and commercial needs.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="products.html">Pipe Fittings</a></li>
+        <li><a href="products.html">Valves</a></li>
+        <li><a href="products.html">Connectors</a></li>
+        <li><a href="products.html">Accessories</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact Info</h4>
+      <ul class="contact-list">
+        <li>Email: info@doctorfittings.com</li>
+        <li>Phone: +1 (555) 123-4567</li>
+        <li>Address: 123 Industrial Ave</li>
+        <li>City, State 12345</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 Doctor Fittings. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  // ── Sticky Scroll / Gold Theatre ──
+  (function() {
+    const stage = document.getElementById('gold-stage');
+    const sticky = document.getElementById('gold-sticky');
+    const track = document.getElementById('gold-track');
+    const trackWrap = document.getElementById('gold-track-wrap');
+    const goldText = document.getElementById('gold-text');
+    if (!stage || !sticky) return;
+
+    const white = [255, 255, 255], gold = [245, 166, 35]; // matches --gold
+    const lerp = (a, b, t) => a + (b - a) * t;
+    const lerpColor = (c1, c2, t) => `rgb(${Math.round(lerp(c1[0], c2[0], t))},${Math.round(lerp(c1[1], c2[1], t))},${Math.round(lerp(c1[2], c2[2], t))})`;
+    let ticking = false;
+
+    function updateGold() {
+      const rect = stage.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const total = Math.max(rect.height - vh, 1);
+      const progress = Math.min(Math.max(-rect.top / total, 0), 1);
+
+      // Background fade: white → gold → white
+      let bg;
+      if (progress < 0.2) bg = lerpColor(white, gold, progress / 0.2);
+      else if (progress > 0.8) bg = lerpColor(gold, white, (progress - 0.8) / 0.2);
+      else bg = `rgb(${gold[0]},${gold[1]},${gold[2]})`;
+      sticky.style.backgroundColor = bg;
+
+      // Text color swap
+      if (window.innerWidth >= 900 && goldText) {
+        const inGold = progress > 0.12 && progress < 0.88;
+        goldText.style.color = inGold ? 'var(--navy)' : 'var(--text-dark)';
+      }
+
+      // Horizontal scroll of track
+      if (window.innerWidth >= 900 && track && trackWrap) {
+        const max = track.scrollWidth - trackWrap.clientWidth;
+        const eased = Math.min(Math.max((progress - 0.05) / 0.9, 0), 1);
+        const x = -max * eased;
+        track.style.transform = `translate3d(${x}px,0,0)`;
+      }
+
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) { requestAnimationFrame(updateGold); ticking = true; }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', updateGold);
+    window.addEventListener('load', function() { setTimeout(updateGold, 100); });
+    updateGold();
+  })();
+</script>
+
+</body>
+</html>

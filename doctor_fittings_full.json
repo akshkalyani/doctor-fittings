@@ -1,0 +1,352 @@
+[
+  {
+    "category": "SS Friction Stay",
+    "products": [
+      {
+        "size": "8 inch",
+        "description": "2MM",
+        "price": 115,
+        "packing": "50",
+        "unit": "PAIR"
+      },
+      {
+        "size": "10 inch",
+        "description": "2MM",
+        "price": 120,
+        "packing": "50",
+        "unit": "PAIR"
+      },
+      {
+        "size": "12 inch",
+        "description": "2MM",
+        "price": 135,
+        "packing": "50",
+        "unit": "PAIR"
+      },
+      {
+        "size": "14 inch",
+        "description": "2MM",
+        "price": 168,
+        "packing": "50",
+        "unit": "PAIR"
+      },
+      {
+        "size": "16 inch",
+        "description": "2.5MM",
+        "price": 206,
+        "packing": "50",
+        "unit": "PAIR"
+      },
+      {
+        "size": "18 inch",
+        "description": "3MM",
+        "price": 283,
+        "packing": "25",
+        "unit": "PAIR"
+      },
+      {
+        "size": "20 inch",
+        "description": "3MM",
+        "price": 377,
+        "packing": "25",
+        "unit": "PAIR"
+      },
+      {
+        "size": "24 inch",
+        "description": "3MM",
+        "price": 434,
+        "packing": "25",
+        "unit": "PAIR"
+      }
+    ]
+  },
+  {
+    "category": "Restriction Arm",
+    "products": [
+      {
+        "code": "ARH01",
+        "description": "Bullet - Black, White",
+        "price": 80,
+        "packing": "200",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARH04",
+        "description": "Black, White",
+        "price": 70,
+        "packing": "200",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARH06",
+        "description": "2 Point - Black, White",
+        "price": 300,
+        "packing": "50",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARH07",
+        "description": "Multi Point Small - Black, White",
+        "price": 220,
+        "packing": "100",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARH08",
+        "description": "Multi Point Big - Black, White",
+        "price": 280,
+        "packing": "100",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARH09",
+        "description": "UPVC - Black, White",
+        "price": 120,
+        "packing": "100",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARH10",
+        "description": "UPVC - Black, White",
+        "price": 120,
+        "packing": "100",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARH11",
+        "description": "Pop Up - Black, White",
+        "price": 200,
+        "packing": "100",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARH13",
+        "description": "Flush Tower Bolt - Black, White, Silver",
+        "price": 200,
+        "packing": "100",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARH14",
+        "description": "Push Handle - Black, White",
+        "price": 120,
+        "packing": "100",
+        "unit": "PCS"
+      }
+    ]
+  },
+  {
+    "category": "Window Handles & Locks",
+    "products": [
+      {
+        "code": "ARH16",
+        "description": "King Domal - Black, White, Gold",
+        "price": 120,
+        "packing": "100",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARH17",
+        "description": "Key Lock - Black, White",
+        "price": 250,
+        "packing": "100",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARH19",
+        "description": "Mini Domal - Black, White",
+        "price": 85,
+        "packing": "100",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARH21",
+        "description": "250MM Shoot Bolt - Black, White",
+        "price": 240,
+        "packing": "100",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARH22",
+        "description": "Thumb Handle - Black, White",
+        "price": 90,
+        "packing": "100",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARH25",
+        "description": "Lock Body Combo - Black, White",
+        "price": 1800,
+        "packing": "100",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARH26",
+        "description": "Bullet Key Handle - Black, White",
+        "price": 275,
+        "packing": "100",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARH36",
+        "description": "Domal Lock - Black, White",
+        "price": 140,
+        "packing": "100",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARH37",
+        "description": "Multi Point Lock - Black",
+        "price": 180,
+        "packing": "100",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARH40",
+        "description": "Diamond Domal Heavy - Black",
+        "price": 165,
+        "packing": "100",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARH41",
+        "description": "Diamond Domal Light - Black",
+        "price": 145,
+        "packing": "100",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARH42",
+        "description": "Domal Lock Light - Black, White",
+        "price": 110,
+        "packing": "100",
+        "unit": "PCS"
+      }
+    ]
+  },
+  {
+    "category": "Hinges",
+    "products": [
+      {
+        "description": "2D Hinge UPVC",
+        "price": 100,
+        "packing": "100",
+        "unit": "PCS"
+      },
+      {
+        "description": "3D Hinge UPVC",
+        "price": 350,
+        "packing": "100",
+        "unit": "PCS"
+      }
+    ]
+  },
+  {
+    "category": "Window Rollers",
+    "products": [
+      {
+        "code": "ARR-01",
+        "description": "Imported",
+        "price": 8,
+        "packing": "1200",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARR-02",
+        "description": "Imported",
+        "price": 7,
+        "packing": "1200",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARR-03",
+        "description": "Imported",
+        "price": 30,
+        "packing": "600",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARR-04",
+        "description": "Imported",
+        "price": 45,
+        "packing": "500",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARR-05",
+        "description": "Imported",
+        "price": 40,
+        "packing": "1000",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARR-06",
+        "description": "Imported",
+        "price": 35,
+        "packing": "1000",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARR-07",
+        "description": "Imported",
+        "price": 120,
+        "packing": "200",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARR-08",
+        "description": "Imported",
+        "price": 160,
+        "packing": "200",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARR-09",
+        "description": "Imported",
+        "price": 250,
+        "packing": "200",
+        "unit": "PCS"
+      }
+    ]
+  },
+  {
+    "category": "Accessories",
+    "products": [
+      {
+        "code": "ARA01",
+        "description": "Lock Guide - Unbreakable",
+        "price": "Black-5, White-8",
+        "packing": "3000",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARA02",
+        "description": "Anti Lift Handle - Unbreakable",
+        "price": "Black-5.5, White-6",
+        "packing": "3000",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARA004",
+        "description": "Water Slot Cover - Unbreakable",
+        "price": "Black-3.5, White-5.5",
+        "packing": "4000",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARA005",
+        "description": "Anticapillary Pad - Unbreakable",
+        "price": "Black-12, White-14",
+        "packing": "2400",
+        "unit": "PCS"
+      },
+      {
+        "code": "ARA006",
+        "description": "Interlock Cap M/F - Unbreakable",
+        "price": "Black-7.5, White-12",
+        "packing": "3200",
+        "unit": "PCS"
+      }
+    ]
+  }
+]
