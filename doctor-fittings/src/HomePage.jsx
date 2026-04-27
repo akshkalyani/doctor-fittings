@@ -645,7 +645,7 @@ export default function HomePage() {
       <Navbar activeLink="Home" />
 
       {/* ── HERO CAROUSEL ── */}
-      <section className="relative w-full h-[75vh] md:h-[85vh] overflow-hidden">
+      <section className="relative w-full h-[90vh] md:h-[90vh] overflow-hidden">
         {/* Slides */}
         {heroSlides.map((slide, i) => (
           <div

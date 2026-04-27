@@ -3,6 +3,9 @@ import { Link, useSearchParams } from "react-router-dom";
 import { Navbar, Footer } from "./HomePage";
 import { ProductCard, QuoteModal } from "./ProductCard";
 
+// -- Hero Image
+import productHero from "./assets/product-hero.png";
+
 // ── Sliding Window Lock images ────────────────────────────────────────────────
 import rbpl1101 from "./assets/product-images/sliding-window-lock/RBPL-1101.png";
 import rbpl1102 from "./assets/product-images/sliding-window-lock/RBPL-1102.png";
@@ -174,47 +177,56 @@ export default function CategoryPage() {
       <Navbar activeLink="Products" />
 
       {/* ── PAGE HERO ── */}
-      <div className="bg-[#1e2a6e] px-6 md:px-12 py-12 md:py-16">
-        <div className="max-w-7xl mx-auto">
-          <Link
-            to="/products"
-            className="inline-flex items-center gap-1.5 text-white/50 text-xs no-underline hover:text-white/80 transition-colors mb-4"
-          >
-            <svg
-              className="w-3.5 h-3.5"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              viewBox="0 0 24 24"
+      <div className="relative bg-[#1e2a6e] px-6 md:px-12 py-12 md:py-16 overflow-hidden">
+        <img
+          src={productHero}
+          alt="Category Hero"
+          className="absolute inset-0 w-full h-full object-cover opacity-40"
+          style={{ zIndex: 0 }}
+        />
+        <div className="absolute inset-0 bg-black/60" style={{ zIndex: 1 }} />
+        <div className="relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <Link
+              to="/products"
+              className="inline-flex items-center gap-1.5 text-white/50 text-xs no-underline hover:text-white/80 transition-colors mb-4"
             >
-              <path d="M15 19l-7-7 7-7" />
-            </svg>
-            All Products
-          </Link>
-          <h1 className="font-['Barlow_Condensed',sans-serif] font-black text-4xl md:text-5xl text-white mb-3">
-            {category.title}
-          </h1>
-          <p className="text-white/65 text-sm md:text-base max-w-xl">
-            {category.description}
-          </p>
-          <div className="mt-6 inline-flex items-center gap-6 bg-white/10 border border-white/15 rounded-xl px-5 py-3">
-            <div className="text-center">
-              <div className="font-['Barlow_Condensed',sans-serif] font-black text-xl text-[#f5a623]">
-                {category.products.length}
+              <svg
+                className="w-3.5 h-3.5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                viewBox="0 0 24 24"
+              >
+                <path d="M15 19l-7-7 7-7" />
+              </svg>
+              All Products
+            </Link>
+            <h1 className="font-['Barlow_Condensed',sans-serif] font-black text-4xl md:text-5xl text-white mb-3">
+              {category.title}
+            </h1>
+            <p className="text-white/65 text-sm md:text-base max-w-xl">
+              {category.description}
+            </p>
+            <div className="mt-6 inline-flex items-center gap-6 bg-white/10 border border-white/15 rounded-xl px-5 py-3">
+              <div className="text-center">
+                <div className="font-['Barlow_Condensed',sans-serif] font-black text-xl text-[#f5a623]">
+                  {category.products.length}
+                </div>
+                <div className="text-white/55 text-xs mt-0.5">Products</div>
               </div>
-              <div className="text-white/55 text-xs mt-0.5">Products</div>
-            </div>
-            <div className="text-center">
-              <div className="font-['Barlow_Condensed',sans-serif] font-black text-xl text-[#f5a623]">
-                100 Pcs
+              <div className="text-center">
+                <div className="font-['Barlow_Condensed',sans-serif] font-black text-xl text-[#f5a623]">
+                  100 Pcs
+                </div>
+                <div className="text-white/55 text-xs mt-0.5">Box Size</div>
               </div>
-              <div className="text-white/55 text-xs mt-0.5">Box Size</div>
-            </div>
-            <div className="text-center">
-              <div className="font-['Barlow_Condensed',sans-serif] font-black text-xl text-[#f5a623]">
-                Silver
+              <div className="text-center">
+                <div className="font-['Barlow_Condensed',sans-serif] font-black text-xl text-[#f5a623]">
+                  Silver
+                </div>
+                <div className="text-white/55 text-xs mt-0.5">Color</div>
               </div>
-              <div className="text-white/55 text-xs mt-0.5">Color</div>
             </div>
           </div>
         </div>

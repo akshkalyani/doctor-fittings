@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Navbar, Footer } from "./HomePage";
+import hero4 from "./assets/hero4.png";
 
 // ── Contact Details ───────────────────────────────────────────────────────────
 const WHATSAPP_NUMBER = "919664535583";
@@ -216,16 +217,25 @@ export default function ContactPage() {
       <Navbar activeLink="Contact" />
 
       {/* ── HERO ── */}
-      <div className="bg-[#1e2a6e] px-6 md:px-12 py-14 md:py-20 text-center">
-        <p className="text-[#f5a623] text-xs font-bold tracking-widest uppercase mb-3">
-          Get In Touch
-        </p>
-        <h1 className="font-['Barlow_Condensed',sans-serif] font-black text-4xl md:text-5xl text-white mb-4 leading-tight">
-          Contact Us
-        </h1>
-        <p className="text-white/60 text-sm md:text-base max-w-md mx-auto">
-          Inquiries, bulk quotes, or technical support — we're here to help.
-        </p>
+      <div className="relative bg-[#1e2a6e] px-6 md:px-12 py-14 md:py-20 text-center overflow-hidden">
+        <img
+          src={hero4}
+          alt="Contact Hero"
+          className="absolute inset-0 w-full h-full object-cover opacity-40"
+          style={{ zIndex: 0 }}
+        />
+        <div className="absolute inset-0 bg-black/60" style={{ zIndex: 1 }} />
+        <div className="relative z-10">
+          <p className="text-[#f5a623] text-xs font-bold tracking-widest uppercase mb-3">
+            Get In Touch
+          </p>
+          <h1 className="font-['Barlow_Condensed',sans-serif] font-black text-4xl md:text-5xl text-white mb-4 leading-tight">
+            Contact Us
+          </h1>
+          <p className="text-white/60 text-sm md:text-base max-w-md mx-auto">
+            Inquiries, bulk quotes, or technical support — we're here to help.
+          </p>
+        </div>
       </div>
 
       <main className="flex-1 bg-[#f4f6fb] px-4 md:px-8 lg:px-12 py-10 md:py-14">
@@ -441,7 +451,6 @@ export default function ContactPage() {
             {/* Phone */}
             <a
               href={`tel:${PHONE_NUMBER}`}
-              href={`tel:${PHONE_NUMBER_2}`}
               className="flex items-center gap-4 bg-white hover:bg-[#f4f6fb] border border-[#e2e6f0] text-[#1a1a2e] rounded-xl p-5 no-underline shadow-sm transition-all hover:-translate-y-0.5 active:translate-y-0 group"
             >
               <div className="w-11 h-11 bg-[#f5a623] rounded-lg flex items-center justify-center text-[#1e2a6e] flex-shrink-0">

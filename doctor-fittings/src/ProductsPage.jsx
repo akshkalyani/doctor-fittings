@@ -24,7 +24,7 @@ import catWindowDoorHandle from "./assets/product-images/product-categories/Wind
 import catConcealedDoorCloser from "./assets/product-images/product-categories/Concealed Door Closer.png";
 import catButtHinges from "./assets/product-images/product-categories/BUTT HINGES.png";
 import catSSMesh from "./assets/product-images/product-categories/STAINLESS STEEL SCREEN MESH.png";
-
+import productHero from "./assets/product-hero.png";
 const PRODUCT_CATEGORIES = [
   {
     name: "Sliding Window Lock",
@@ -498,28 +498,37 @@ export default function ProductsPage() {
       <Navbar activeLink="Products" />
 
       {/* ── PAGE HERO ── */}
-      <div className="bg-[#1e2a6e] px-6 md:px-12 py-12 md:py-16 text-center">
-        <h1 className="font-['Barlow_Condensed',sans-serif] font-black text-4xl md:text-5xl text-white mb-3">
-          Product Catalogue
-        </h1>
-        <p className="text-white/65 text-sm md:text-base max-w-xl mx-auto mb-8">
-          Explore our comprehensive range of premium window fittings and
-          accessories
-        </p>
-        <div className="inline-flex items-center gap-6 md:gap-10 bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl px-6 md:px-10 py-4 flex-wrap justify-center">
-          {[
-            [`${CATEGORIES.length}`, "Categories"],
-            [`${ALL_PRODUCTS.length}+`, "Products"],
-            ["ISO", "Certified"],
-            ["Bulk", "Pricing"],
-          ].map(([val, label]) => (
-            <div key={label} className="text-center">
-              <div className="font-['Barlow_Condensed',sans-serif] font-black text-xl text-[#f5a623]">
-                {val}
+      <div className="relative bg-[#1e2a6e] px-6 md:px-12 py-12 md:py-16 text-center overflow-hidden">
+        <img
+          src={productHero}
+          alt="Products Hero"
+          className="absolute inset-0 w-full h-full object-cover opacity-40"
+          style={{ zIndex: 0 }}
+        />
+        <div className="absolute inset-0 bg-black/60" style={{ zIndex: 1 }} />
+        <div className="relative z-10">
+          <h1 className="font-['Barlow_Condensed',sans-serif] font-black text-4xl md:text-5xl text-white mb-3">
+            Product Catalogue
+          </h1>
+          <p className="text-white/65 text-sm md:text-base max-w-xl mx-auto mb-8">
+            Explore our comprehensive range of premium window fittings and
+            accessories
+          </p>
+          <div className="inline-flex items-center gap-6 md:gap-10 bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl px-6 md:px-10 py-4 flex-wrap justify-center">
+            {[
+              [`${CATEGORIES.length}`, "Categories"],
+              [`${ALL_PRODUCTS.length}+`, "Products"],
+              ["ISO", "Certified"],
+              ["Bulk", "Pricing"],
+            ].map(([val, label]) => (
+              <div key={label} className="text-center">
+                <div className="font-['Barlow_Condensed',sans-serif] font-black text-xl text-[#f5a623]">
+                  {val}
+                </div>
+                <div className="text-white/55 text-xs mt-0.5">{label}</div>
               </div>
-              <div className="text-white/55 text-xs mt-0.5">{label}</div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
