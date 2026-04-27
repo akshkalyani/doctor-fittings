@@ -18,6 +18,26 @@ import catButtHinges from "./assets/product-images/product-categories/BUTT HINGE
 import catSlidingLock from "./assets/product-images/product-categories/SLIDING WINDOW LOCK.png";
 import catCornerCleat from "./assets/product-images/product-categories/CORNER CLEAT JOINTS.png";
 import catUPVC from "./assets/product-images/product-categories/UPVC WINDOW SLIDING ROLLERS.png";
+
+// ── Nav product categories ───────────────────────────────────────────────────
+const NAV_CATEGORIES = [
+  {
+    name: "Sliding Window Lock",
+    image: catSlidingLock,
+    slug: "sliding-window-lock",
+  },
+  { name: "Dumal Sliding Rollers", image: catDumalRollers, slug: null },
+  { name: "UPVC Sliding Roller", image: catUPVC, slug: null },
+  { name: "Premium Sliding Rollers", image: catPremiumRollers, slug: null },
+  { name: "Economy Sliding Rollers", image: catEconomyRollers, slug: null },
+  { name: "G & C Channel System", image: catGCChannel, slug: null },
+  { name: "Window & Door Handle", image: catWindowDoorHandle, slug: null },
+  { name: "Concealed Door Closer", image: catConcealedDoorCloser, slug: null },
+  { name: "Butt Hinges", image: catButtHinges, slug: null },
+  { name: "Corner Cleat Joints", image: catCornerCleat, slug: null },
+  { name: "SS Wire Mesh", image: catSSMesh, slug: null },
+];
+
 // ── Icons ────────────────────────────────────────────────────────────────────
 const IconGear = () => (
   <svg
@@ -115,6 +135,19 @@ const IconHome = () => (
 // ── Navbar ───────────────────────────────────────────────────────────────────
 function Navbar({ activeLink = "Home" }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [prodHover, setProdHover] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const hoverTimeout = useState(null);
+
+  const handleMouseEnter = () => {
+    if (hoverTimeout[0]) clearTimeout(hoverTimeout[0]);
+    hoverTimeout[0] = null;
+    setProdHover(true);
+  };
+
+  const handleMouseLeave = () => {
+    hoverTimeout[0] = setTimeout(() => setProdHover(false), 100);
+  };
 
   return (
     <nav className="bg-[#1e2a6e] h-[5rem] flex items-center justify-between px-8 md:px-12 sticky top-0 z-50 shadow-lg">
@@ -134,10 +167,15 @@ function Navbar({ activeLink = "Home" }) {
           ["About", "/about"],
           ["Contact", "/contact"],
         ].map(([label, path]) => (
-          <li key={label}>
+          <li
+            key={label}
+            className="relative"
+            onMouseEnter={() => label === "Products" && handleMouseEnter()}
+            onMouseLeave={() => label === "Products" && handleMouseLeave()}
+          >
             <Link
               to={path}
-              className={`text-sm px-4 py-1.5 rounded-full no-underline transition-all duration-200 font-semibold
+              className={`text-sm px-4 py-1.5 rounded-full no-underline transition-all duration-200 font-semibold flex items-center gap-1
                 ${
                   label === activeLink
                     ? "bg-[#f5a623] text-[#1e2a6e]"
@@ -145,7 +183,61 @@ function Navbar({ activeLink = "Home" }) {
                 }`}
             >
               {label}
+              {label === "Products" && (
+                <svg
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${prodHover ? "rotate-180" : ""}`}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              )}
             </Link>
+
+            {/* Products mega dropdown */}
+            {label === "Products" && prodHover && (
+              <div className="absolute top-full right-0 mt-2 w-[540px] bg-white rounded-2xl shadow-2xl border border-[#e2e6f0] p-5 z-50">
+                <div className="flex items-center justify-between mb-4">
+                  <h4 className="text-[#1e2a6e] font-bold text-sm">
+                    Product Categories
+                  </h4>
+                  <Link
+                    to="/products"
+                    className="text-[#f5a623] text-xs font-semibold no-underline hover:underline"
+                  >
+                    View All →
+                  </Link>
+                </div>
+                <div className="grid grid-cols-4 gap-3">
+                  {NAV_CATEGORIES.map((cat) => (
+                    <Link
+                      key={cat.name}
+                      to={
+                        cat.slug
+                          ? `/products/category?cat=${cat.slug}`
+                          : "/products"
+                      }
+                      className="group rounded-lg overflow-hidden border border-[#e2e6f0] hover:border-[#f5a623] hover:shadow-md transition-all duration-200 no-underline bg-white"
+                    >
+                      <div className="aspect-square bg-[#f4f6fb] overflow-hidden">
+                        <img
+                          src={cat.image}
+                          alt={cat.name}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="px-1.5 py-1.5">
+                        <span className="text-[#1e2a6e] text-[0.6rem] font-semibold leading-tight line-clamp-2 block text-center">
+                          {cat.name}
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
           </li>
         ))}
       </ul>
@@ -169,7 +261,7 @@ function Navbar({ activeLink = "Home" }) {
 
       {/* Mobile drawer */}
       {menuOpen && (
-        <div className="absolute top-[5rem] right-0 w-64 bg-[#16205a] shadow-2xl md:hidden z-50 rounded-bl-xl">
+        <div className="absolute top-[5rem] right-0 w-72 bg-[#16205a] shadow-2xl md:hidden z-50 rounded-bl-xl max-h-[80vh] overflow-y-auto">
           <ul className="list-none flex flex-col p-4 gap-1">
             {[
               ["Home", "/"],
@@ -178,13 +270,69 @@ function Navbar({ activeLink = "Home" }) {
               ["Contact", "/contact"],
             ].map(([label, path]) => (
               <li key={label}>
-                <Link
-                  to={path}
-                  onClick={() => setMenuOpen(false)}
-                  className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-lg no-underline text-sm font-medium transition-all"
-                >
-                  {label}
-                </Link>
+                {label === "Products" ? (
+                  <>
+                    <button
+                      onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
+                      className="w-full flex items-center justify-between px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-lg text-sm font-medium transition-all bg-transparent border-none cursor-pointer"
+                    >
+                      Products
+                      <svg
+                        className={`w-3.5 h-3.5 transition-transform duration-200 ${mobileProductsOpen ? "rotate-180" : ""}`}
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M6 9l6 6 6-6" />
+                      </svg>
+                    </button>
+                    {mobileProductsOpen && (
+                      <div className="grid grid-cols-3 gap-2 px-2 pb-3 pt-1">
+                        {NAV_CATEGORIES.map((cat) => (
+                          <Link
+                            key={cat.name}
+                            to={
+                              cat.slug
+                                ? `/products/category?cat=${cat.slug}`
+                                : "/products"
+                            }
+                            onClick={() => setMenuOpen(false)}
+                            className="rounded-lg overflow-hidden border border-white/10 hover:border-[#f5a623] transition-all no-underline"
+                          >
+                            <div className="aspect-square bg-white/5 overflow-hidden">
+                              <img
+                                src={cat.image}
+                                alt={cat.name}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                            <div className="px-1 py-1">
+                              <span className="text-white/70 text-[0.5rem] font-medium leading-tight line-clamp-2 block text-center">
+                                {cat.name}
+                              </span>
+                            </div>
+                          </Link>
+                        ))}
+                        <Link
+                          to="/products"
+                          onClick={() => setMenuOpen(false)}
+                          className="col-span-3 text-center text-[#f5a623] text-xs font-semibold no-underline py-2 hover:underline"
+                        >
+                          View All Products →
+                        </Link>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <Link
+                    to={path}
+                    onClick={() => setMenuOpen(false)}
+                    className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-lg no-underline text-sm font-medium transition-all"
+                  >
+                    {label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

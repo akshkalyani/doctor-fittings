@@ -78,14 +78,15 @@ export default function AboutPage() {
     <div className="font-['Barlow',sans-serif] text-[#1a1a2e] min-h-screen flex flex-col">
       <Navbar activeLink="About" />
 
-      {/* ── HERO ── */}
+      {/* ── HERO / ABOUT US ── */}
       <div className="bg-[#1e2a6e] px-6 md:px-12 py-14 md:py-20 text-center">
         <p className="text-[#f5a623] text-xs font-bold tracking-widest uppercase mb-3">Who We Are</p>
         <h1 className="font-['Barlow_Condensed',sans-serif] font-black text-4xl md:text-5xl text-white mb-4 leading-tight">
-          About Doctor Fittings
+          About Docot Fitting
         </h1>
         <p className="text-white/60 text-sm md:text-base max-w-lg mx-auto leading-relaxed">
-          Leading the industry with precision manufacturing and unwavering commitment to excellence since 2001.
+          Docot Fitting is a Rajkot, Gujarat-based supplier specializing in aluminium hardware, UPVC fittings, and wire mesh products. We are dedicated to providing reliable, high-quality hardware solutions that meet the evolving needs of fabricators, builders, and dealers.<br /><br />
+          With a strong focus on durability and precision, our products are trusted for their performance and long service life.
         </p>
       </div>
 
@@ -103,49 +104,92 @@ export default function AboutPage() {
 
       <main className="flex-1 bg-[#f4f6fb]">
 
-        {/* ── OUR STORY ── */}
+        {/* ── ABOUT CONTENT ── */}
         <section className="bg-white px-6 md:px-12 py-14 md:py-20">
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-[#f5a623] text-xs font-bold tracking-widest uppercase mb-3">Our Story</p>
-              <h2 className="font-['Barlow_Condensed',sans-serif] font-black text-3xl md:text-4xl text-[#1e2a6e] mb-6 leading-tight">
-                Built on Precision.<br />Grown on Trust.
-              </h2>
-              <div className="space-y-4 text-[#5a6080] text-sm leading-relaxed">
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <div className="space-y-7 text-[#1a1a2e] text-sm leading-relaxed">
+              <div>
+                <h2 className="font-['Barlow_Condensed',sans-serif] font-black text-2xl md:text-3xl text-[#1e2a6e] mb-2 leading-tight">Our Story</h2>
                 <p>
-                  Founded in 2001, Doctor Fittings began with a simple mission — to provide the highest quality pipe fittings and connectors to industrial and commercial customers worldwide.
+                  Founded with the vision to deliver dependable hardware solutions, Docot Fitting has steadily grown into a trusted name in the market. By consistently maintaining quality standards and understanding customer requirements, we have built long-term relationships with clients across the region.
                 </p>
                 <p>
-                  Over two decades, we've grown from a small manufacturing operation to a leading provider of premium window hardware, serving thousands of clients across multiple industries.
+                  Our journey is driven by commitment, consistency, and continuous improvement.
                 </p>
+              </div>
+              <div>
+                <h2 className="font-['Barlow_Condensed',sans-serif] font-black text-2xl md:text-3xl text-[#1e2a6e] mb-2 leading-tight">What We Offer</h2>
+                <ul className="list-disc pl-5 text-[#5a6080]">
+                  <li>Sliding window locks</li>
+                  <li>Sliding rollers (UPVC & aluminium)</li>
+                  <li>Window sliding systems (premium & economy)</li>
+                  <li>G channel / D channel</li>
+                  <li>Window handles</li>
+                  <li>Door closers</li>
+                  <li>Butt hinges</li>
+                  <li>Corner cleat joints</li>
+                  <li>Stainless steel wire mesh</li>
+                </ul>
+                <p className="mt-2">Each product is carefully selected to ensure strength, functionality, and reliability.</p>
+              </div>
+              <div>
+                <h2 className="font-['Barlow_Condensed',sans-serif] font-black text-2xl md:text-3xl text-[#1e2a6e] mb-2 leading-tight">Quality Commitment</h2>
                 <p>
-                  Every product that leaves our facility meets the strictest quality standards and is backed by our experienced technical support team.
+                  Quality is at the core of everything we do. Our products are sourced from trusted vendors who use advanced machinery and modern manufacturing processes.<br />
+                  Before reaching you, every product undergoes proper inspection to ensure it meets industry standards and performs as expected.
+                </p>
+              </div>
+              <div>
+                <h2 className="font-['Barlow_Condensed',sans-serif] font-black text-2xl md:text-3xl text-[#1e2a6e] mb-2 leading-tight">Infrastructure & Storage</h2>
+                <p>
+                  We maintain a well-organized storage system that helps us manage inventory efficiently and fulfill orders on time. Our streamlined operations ensure quick availability and reliable supply for our customers.
+                </p>
+              </div>
+              <div>
+                <h2 className="font-['Barlow_Condensed',sans-serif] font-black text-2xl md:text-3xl text-[#1e2a6e] mb-2 leading-tight">Why Choose Us</h2>
+                <ul className="list-none space-y-1 text-[#5a6080]">
+                  <li>✔ Trusted supplier in Rajkot</li>
+                  <li>✔ High-quality and durable products</li>
+                  <li>✔ Competitive pricing</li>
+                  <li>✔ Ready stock availability</li>
+                  <li>✔ Customer-focused approach</li>
+                </ul>
+              </div>
+              <div>
+                <h2 className="font-['Barlow_Condensed',sans-serif] font-black text-2xl md:text-3xl text-[#1e2a6e] mb-2 leading-tight">Our Vision</h2>
+                <p>
+                  To become a reliable and recognized name in the hardware industry by consistently delivering quality products and building lasting customer relationships.
+                </p>
+              </div>
+              <div>
+                <h2 className="font-['Barlow_Condensed',sans-serif] font-black text-2xl md:text-3xl text-[#1e2a6e] mb-2 leading-tight">Our Mission</h2>
+                <p>
+                  To provide dependable, affordable, and high-performance hardware solutions that meet modern construction and fabrication needs.
+                </p>
+              </div>
+              <div>
+                <h2 className="font-['Barlow_Condensed',sans-serif] font-black text-2xl md:text-3xl text-[#1e2a6e] mb-2 leading-tight">Let’s Work Together</h2>
+                <p>
+                  We believe in building strong business relationships based on trust and quality. Whether you are a dealer, contractor, or fabricator, Docot Fitting is ready to support your requirements.<br />
+                  We look forward to working with you.
                 </p>
               </div>
             </div>
-
-            {/* Factory illustration */}
+            {/* Optionally, keep the factory illustration for visual appeal */}
             <div className="bg-[#f4f6fb] rounded-2xl border border-[#e2e6f0] flex items-center justify-center aspect-[4/3]">
               <svg viewBox="0 0 220 160" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-48 h-auto">
-                {/* Chimneys */}
                 <rect x="30" y="18" width="14" height="46" rx="2" fill="#d4daf0" />
                 <rect x="52" y="28" width="12" height="36" rx="2" fill="#d4daf0" />
-                {/* Smoke */}
                 <circle cx="37" cy="14" r="6" fill="#c8cde0" opacity="0.5" />
                 <circle cx="58" cy="22" r="5" fill="#c8cde0" opacity="0.4" />
-                {/* Main building */}
                 <rect x="14" y="64" width="192" height="80" rx="4" fill="#2a3680" />
-                {/* Roof */}
                 <polygon points="14,64 110,32 206,64" fill="#1e2a6e" />
-                {/* Windows */}
                 <rect x="28"  y="80" width="28" height="22" rx="2" fill="#f5a623" opacity="0.7" />
                 <rect x="66"  y="80" width="28" height="22" rx="2" fill="#f5a623" opacity="0.7" />
                 <rect x="104" y="80" width="28" height="22" rx="2" fill="#f5a623" opacity="0.5" />
                 <rect x="142" y="80" width="28" height="22" rx="2" fill="#f5a623" opacity="0.5" />
                 <rect x="180" y="80" width="22" height="22" rx="2" fill="#f5a623" opacity="0.4" />
-                {/* Door */}
                 <rect x="93" y="112" width="34" height="32" rx="2" fill="#f4f6fb" />
-                {/* Ground */}
                 <rect x="0" y="144" width="220" height="6" rx="3" fill="#d4daf0" />
               </svg>
             </div>

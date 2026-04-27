@@ -441,6 +441,7 @@ export default function ContactPage() {
             {/* Phone */}
             <a
               href={`tel:${PHONE_NUMBER}`}
+              href={`tel:${PHONE_NUMBER_2}`}
               className="flex items-center gap-4 bg-white hover:bg-[#f4f6fb] border border-[#e2e6f0] text-[#1a1a2e] rounded-xl p-5 no-underline shadow-sm transition-all hover:-translate-y-0.5 active:translate-y-0 group"
             >
               <div className="w-11 h-11 bg-[#f5a623] rounded-lg flex items-center justify-center text-[#1e2a6e] flex-shrink-0">
