@@ -13,6 +13,7 @@ import img50mm from "./assets/product-images/aluminium-window-hardware/50MM-EURO
 import imgCorner from "./assets/product-images/aluminium-window-hardware/Corner-Cleat-Solid-1-rapchik.jpg";
 import imgTLock from "./assets/product-images/upvc-hardware/T-Lock.jpg";
 import imgTLock2 from "./assets/product-images/upvc-hardware/T-Lock-2.jpg";
+import frictionStay from "./assets/product-images/friction-stay/friction-stay.png";
 
 // ── Category thumbnail images ─────────────────────────────────────────────────
 import catSlidingLock from "./assets/product-images/sliding-window-lock/RBPL-1101.png";
@@ -58,8 +59,8 @@ const PRODUCT_CATEGORIES = [
 // Category images (cycle through available images for categories)
 const categoryImages = {
   "SS Friction Stay": [
-    img20mm,
-    img27mm,
+    frictionStay,
+    frictionStay,
     img29mm,
     img40mm,
     img45mm,
