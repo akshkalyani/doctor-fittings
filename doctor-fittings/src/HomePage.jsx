@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
 import SEO from "./SEO";
 // import logoSvg from "./assets/doctor-fittings-block.png";
@@ -138,16 +138,16 @@ function Navbar({ activeLink = "Home" }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [prodHover, setProdHover] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
-  const hoverTimeout = useState(null);
+  const hoverTimeout = useRef(null);
 
   const handleMouseEnter = () => {
-    if (hoverTimeout[0]) clearTimeout(hoverTimeout[0]);
-    hoverTimeout[0] = null;
+    if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
+    hoverTimeout.current = null;
     setProdHover(true);
   };
 
   const handleMouseLeave = () => {
-    hoverTimeout[0] = setTimeout(() => setProdHover(false), 100);
+    hoverTimeout.current = setTimeout(() => setProdHover(false), 100);
   };
 
   return (

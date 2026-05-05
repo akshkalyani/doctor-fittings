@@ -171,42 +171,98 @@ export function QuoteModal({ product, onClose }) {
 
 // ── Product Card ──────────────────────────────────────────────────────────────
 export function ProductCard({ product, onQuote }) {
-  const priceStr =
-    typeof product.price === "number" ? `₹${product.price}` : product.price;
+  // Compose a list of fields to show, in a nice order, only if present
+  const fields = [
+    ["Type", product.type],
+    ["Class", product.class],
+    ["Color", product.color],
+    ["Size", product.size],
+    ["Weight Capacity", product.weight_capacity],
+    ["Packing", product.packing],
+    ["Material", product.material],
+    [
+      "Mesh Types",
+      Array.isArray(product.mesh_types)
+        ? product.mesh_types.join(", ")
+        : product.mesh_types,
+    ],
+    ["Features", product.features],
+  ].filter(([, v]) => v);
+
+  // Compose a title for the card: name + code if both, else fallback
+  const title =
+    [product.name, product.product_code].filter(Boolean).join(" ") ||
+    product.type ||
+    product.product_code ||
+    product.material ||
+    product.category;
+
   return (
     <div className="bg-white rounded-xl border border-[#e2e6f0] overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 flex flex-col">
       {/* Image */}
       <div className="aspect-square bg-[#f4f6fb] flex items-center justify-center overflow-hidden">
         <img
           src={product.image}
-          alt={`${product.name} ${product.code} - Doctor Fittings Rajkot`}
+          alt={`${title} - Doctor Fittings Rajkot`}
           className="w-full h-full object-cover"
           loading="lazy"
         />
       </div>
       {/* Info */}
       <div className="p-3 sm:p-4 flex flex-col flex-1">
-        <h3 className="font-bold text-sm text-[#1a1a2e] leading-snug mb-1 line-clamp-2">
-          {product.name}
+        {/* Title: name + code */}
+        <h3 className="font-bold text-base text-[#1a1a2e] leading-snug mb-1">
+          {product.name || product.type || product.material || product.category}
+          {product.product_code && (
+            <span className="ml-1 font-normal text-[#5a6080] text-xs">
+              {product.product_code}
+            </span>
+          )}
         </h3>
-        <span className="inline-block self-start bg-[#1e2a6e]/10 text-[#1e2a6e] text-[0.65rem] font-bold px-2 py-0.5 rounded mb-2">
-          {product.code}
-        </span>
-        <p className="text-[#5a6080] text-xs mb-2">Size: {product.size}</p>
-        <div className="mt-auto flex items-end justify-between gap-2">
-          <div>
-            <span className="text-[#f5a623] font-black text-base leading-none">
-              {priceStr}
-            </span>
-            <span className="text-[#5a6080] text-[0.65rem] ml-1">
-              /{product.unit}
-            </span>
-          </div>
+        {/* Code badge */}
+        {product.product_code && (
+          <span className="inline-block self-start bg-[#e8eaf6] text-[#1e2a6e] text-xs font-bold px-2 py-0.5 rounded mb-2 mt-0.5 tracking-wide">
+            {product.product_code}
+          </span>
+        )}
+        {/* Fields */}
+        <div className="space-y-1 mb-2">
+          {fields.map(([label, value]) => (
+            <div
+              key={label}
+              className="text-[#5a6080] text-xs flex flex-row gap-1"
+            >
+              <span className="font-semibold text-[#1e2a6e]">{label}:</span>
+              <span>{value}</span>
+            </div>
+          ))}
         </div>
+        {/* Price/unit if present */}
+        {(product.price || product.packing) && (
+          <div className="mt-auto flex items-end justify-between gap-2 mb-2">
+            {product.price && (
+              <span className="text-[#f5a623] font-black text-base leading-none">
+                {typeof product.price === "number"
+                  ? `₹${product.price}`
+                  : product.price}
+              </span>
+            )}
+            {product.unit && (
+              <span className="text-[#5a6080] text-[0.9rem] ml-1">
+                /{product.unit}
+              </span>
+            )}
+            {product.packing && !product.price && (
+              <span className="text-[#5a6080] text-xs ml-1">
+                {product.packing}
+              </span>
+            )}
+          </div>
+        )}
         <button
           onClick={() => onQuote(product)}
-          aria-label={`Request quote for ${product.name}`}
-          className="mt-3 w-full bg-[#f5a623] text-[#1e2a6e] text-xs font-bold py-2 rounded-lg hover:bg-[#ffc94d] transition-colors cursor-pointer border-none"
+          aria-label={`Request quote for ${title}`}
+          className="mt-auto w-full bg-[#f5a623] text-[#1e2a6e] text-base font-bold py-2.5 rounded-lg hover:bg-[#ffc94d] transition-colors cursor-pointer border-none"
         >
           Request Quote
         </button>

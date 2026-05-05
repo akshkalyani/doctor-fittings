@@ -9,7 +9,6 @@ const WHATSAPP_MSG = encodeURIComponent(
   "Hi I want to purchase the window aluminium hardware, please share the quotation and variety of range you have",
 );
 const PHONE_NUMBER = "+919664535583";
-const PHONE_NUMBER_2 = "+919624075535";
 const EMAIL = "doctorfittingshardware@gmail.com";
 const FORMSPREE_URL = "https://formspree.io/f/xqewnvow";
 
@@ -82,72 +81,6 @@ const IconSend = () => (
     <polygon points="22 2 15 22 11 13 2 9 22 2" />
   </svg>
 );
-
-// ── Contact Card ──────────────────────────────────────────────────────────────
-function ContactCard({
-  icon,
-  label,
-  value,
-  href,
-  subValues = [],
-  actionLabel,
-  actionColor = "navy",
-}) {
-  const colorMap = {
-    navy: {
-      bg: "bg-[#1e2a6e]",
-      hover: "hover:bg-[#16205a]",
-      text: "text-white",
-    },
-    gold: {
-      bg: "bg-[#f5a623]",
-      hover: "hover:bg-[#ffc94d]",
-      text: "text-[#1e2a6e]",
-    },
-    green: {
-      bg: "bg-[#25d366]",
-      hover: "hover:bg-[#20bd5a]",
-      text: "text-white",
-    },
-  };
-  const c = colorMap[actionColor];
-
-  return (
-    <div className="bg-white border border-[#e2e6f0] rounded-xl p-5 shadow-sm flex flex-col gap-4">
-      <div className="flex items-start gap-3">
-        <div className="w-10 h-10 bg-[#f5a623] rounded-lg flex items-center justify-center text-[#1e2a6e] flex-shrink-0">
-          {icon}
-        </div>
-        <div>
-          <p className="text-xs font-bold text-[#5a6080] uppercase tracking-wider mb-0.5">
-            {label}
-          </p>
-          <p className="text-sm font-semibold text-[#1a1a2e]">{value}</p>
-          {subValues.map((v, i) => (
-            <p key={i} className="text-xs text-[#5a6080] mt-0.5">
-              {v}
-            </p>
-          ))}
-        </div>
-      </div>
-      {href && actionLabel && (
-        <a
-          href={href}
-          target={href.startsWith("http") ? "_blank" : undefined}
-          rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-          className={`flex items-center justify-center gap-2 ${c.bg} ${c.hover} ${c.text} text-xs font-bold px-4 py-2.5 rounded-lg no-underline transition-all hover:-translate-y-0.5 active:translate-y-0`}
-        >
-          {icon && (
-            <span className="w-4 h-4 flex items-center justify-center">
-              {icon}
-            </span>
-          )}
-          {actionLabel}
-        </a>
-      )}
-    </div>
-  );
-}
 
 // ── ContactPage ───────────────────────────────────────────────────────────────
 export default function ContactPage() {
