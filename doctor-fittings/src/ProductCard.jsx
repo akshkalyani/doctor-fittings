@@ -54,6 +54,7 @@ export function QuoteModal({ product, onClose }) {
           </div>
           <button
             onClick={onClose}
+            aria-label="Close quote modal"
             className="text-white/60 hover:text-white mt-1 bg-transparent border-none cursor-pointer"
           >
             <svg
@@ -178,7 +179,7 @@ export function ProductCard({ product, onQuote }) {
       <div className="aspect-square bg-[#f4f6fb] flex items-center justify-center overflow-hidden">
         <img
           src={product.image}
-          alt={product.name}
+          alt={`${product.name} ${product.code} - Doctor Fittings Rajkot`}
           className="w-full h-full object-cover"
           loading="lazy"
         />
@@ -204,6 +205,7 @@ export function ProductCard({ product, onQuote }) {
         </div>
         <button
           onClick={() => onQuote(product)}
+          aria-label={`Request quote for ${product.name}`}
           className="mt-3 w-full bg-[#f5a623] text-[#1e2a6e] text-xs font-bold py-2 rounded-lg hover:bg-[#ffc94d] transition-colors cursor-pointer border-none"
         >
           Request Quote

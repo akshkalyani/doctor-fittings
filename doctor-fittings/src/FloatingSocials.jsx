@@ -75,6 +75,7 @@ export default function FloatingSocials() {
           target="_blank"
           rel="noopener noreferrer"
           title={s.name}
+          aria-label={`Contact Doctor Fittings on ${s.name}`}
           style={{ ...btnBase, background: s.bg }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = "scale(1.12)";

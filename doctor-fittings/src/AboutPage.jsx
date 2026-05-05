@@ -1,4 +1,5 @@
 import { Navbar, Footer } from "./HomePage";
+import SEO from "./SEO";
 import hero4 from "./assets/hero4.png";
 
 // ── Timeline Data ─────────────────────────────────────────────────────────────
@@ -104,7 +105,7 @@ const CERTS = [
 
 // ── Stats ─────────────────────────────────────────────────────────────────────
 const STATS = [
-  { value: "25+", label: "Years Experience" },
+  { value: "18+", label: "Years Experience" },
   { value: "500+", label: "Products" },
   { value: "1000+", label: "Clients Served" },
   { value: "99.8%", label: "Quality Rate" },
@@ -127,13 +128,19 @@ const CheckIcon = () => (
 export default function AboutPage() {
   return (
     <div className="font-['Barlow',sans-serif] text-[#1a1a2e] min-h-screen flex flex-col">
+      <SEO
+        title="About Doctor Fittings | 18+ Years of Premium Hardware Expertise in Rajkot"
+        description="Learn about Doctor Fittings — Rajkot's trusted supplier of aluminium window hardware, UPVC fittings & wire mesh. 18+ years of expertise in durability and precision engineering for fabricators and builders across Gujarat."
+        path="/about"
+        keywords="about doctor fittings, hardware supplier rajkot, aluminium window hardware manufacturer, 18 years hardware experience, UPVC fittings rajkot, window hardware experts gujarat"
+      />
       <Navbar activeLink="About" />
 
       {/* ── HERO / ABOUT US ── */}
       <div className="relative bg-[#1e2a6e] px-6 md:px-12 py-14 md:py-20 text-center overflow-hidden">
         <img
           src={hero4}
-          alt="About Hero"
+          alt="Doctor Fittings Manufacturing Facility Rajkot Gujarat"
           className="absolute inset-0 w-full h-full object-cover opacity-40"
           style={{ zIndex: 0 }}
         />
@@ -143,17 +150,23 @@ export default function AboutPage() {
             Who We Are
           </p>
           <h1 className="font-['Barlow_Condensed',sans-serif] font-black text-4xl md:text-5xl text-white mb-4 leading-tight">
-            About Docot Fitting
+            About Doctor Fittings
           </h1>
           <p className="text-white/60 text-sm md:text-base max-w-lg mx-auto leading-relaxed">
-            Docot Fitting is a Rajkot, Gujarat-based supplier specializing in
-            aluminium hardware, UPVC fittings, and wire mesh products. We are
-            dedicated to providing reliable, high-quality hardware solutions
-            that meet the evolving needs of fabricators, builders, and dealers.
+            Doctor Fittings is a Rajkot, Gujarat-based supplier specializing in
+            premium aluminium hardware, UPVC fittings, and stainless steel wire
+            mesh products. With over 18 years of hands-on experience in the
+            hardware industry, we have established ourselves as one of the most
+            trusted names for window and door fittings in Western India.
             <br />
             <br />
-            With a strong focus on durability and precision, our products are
-            trusted for their performance and long service life.
+            Our commitment to durability, precision, and customer satisfaction
+            drives everything we do. From sliding window locks and friction
+            stays to concealed door closers and designer handles, every product
+            in our range is carefully selected and tested to meet the demands of
+            modern construction. We serve fabricators, builders, architects, and
+            dealers across Rajkot, Ahmedabad, Surat, and the entire Gujarat
+            region — with pan-India delivery for bulk orders.
           </p>
         </div>
       </div>
@@ -185,14 +198,16 @@ export default function AboutPage() {
                 </h2>
                 <p>
                   Founded with the vision to deliver dependable hardware
-                  solutions, Docot Fitting has steadily grown into a trusted
-                  name in the market. By consistently maintaining quality
-                  standards and understanding customer requirements, we have
-                  built long-term relationships with clients across the region.
+                  solutions, Doctor Fittings has steadily grown into a trusted
+                  name in the Rajkot hardware market. By consistently
+                  maintaining quality standards and understanding customer
+                  requirements, we have built long-term relationships with
+                  clients across Gujarat and India.
                 </p>
                 <p>
                   Our journey is driven by commitment, consistency, and
-                  continuous improvement.
+                  continuous improvement — making us one of the best hardware
+                  shops in Rajkot.
                 </p>
               </div>
               <div>
@@ -279,7 +294,7 @@ export default function AboutPage() {
                 <p>
                   We believe in building strong business relationships based on
                   trust and quality. Whether you are a dealer, contractor, or
-                  fabricator, Docot Fitting is ready to support your
+                  fabricator, Doctor Fittings is ready to support your
                   requirements.
                   <br />
                   We look forward to working with you.
@@ -425,7 +440,7 @@ export default function AboutPage() {
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-10">
               <p className="text-[#f5a623] text-xs font-bold tracking-widest uppercase mb-3">
-                Since 2001
+                Since 2008
               </p>
               <h2 className="font-['Barlow_Condensed',sans-serif] font-black text-3xl md:text-4xl text-[#1e2a6e]">
                 Our Journey

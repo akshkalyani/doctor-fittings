@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Footer } from "./HomePage";
 import { ProductCard, QuoteModal } from "./ProductCard";
+import SEO from "./SEO";
 
 // ── Product Images ────────────────────────────────────────────────────────────
 import img20mm from "./assets/product-images/aluminium-window-hardware/20MM-x-54MM-SERIES.jpg";
@@ -496,13 +497,19 @@ export default function ProductsPage() {
 
   return (
     <div className="font-['Barlow',sans-serif] text-[#1a1a2e] min-h-screen flex flex-col">
+      <SEO
+        title="High-Quality Aluminium Window Fittings & Accessories | Doctor Fittings"
+        description="Discover a wide range of durable aluminium window hardware. From hinges to locking systems, find the best fittings for modern architecture in Rajkot and beyond. SS friction stays, window rollers, handles & more."
+        path="/products"
+        keywords="aluminium window fittings, SS friction stay, window rollers rajkot, window handles, restriction arm, UPVC hardware, window locks, aluminium window accessories, best window hardware rajkot"
+      />
       <Navbar activeLink="Products" />
 
       {/* ── PAGE HERO ── */}
       <div className="relative bg-[#1e2a6e] px-6 md:px-12 py-12 md:py-16 text-center overflow-hidden">
         <img
           src={productHero}
-          alt="Products Hero"
+          alt="Premium Aluminium Window Hardware Products Doctor Fittings Rajkot"
           className="absolute inset-0 w-full h-full object-cover opacity-40"
           style={{ zIndex: 0 }}
         />
@@ -549,7 +556,7 @@ export default function ProductsPage() {
                   <div className="aspect-[4/3] bg-[#f4f6fb] overflow-hidden">
                     <img
                       src={cat.image}
-                      alt={cat.name}
+                      alt={`${cat.name} - Premium Window Hardware Doctor Fittings Rajkot`}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                   </div>

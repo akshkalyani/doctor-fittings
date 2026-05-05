@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Navbar, Footer } from "./HomePage";
+import SEO from "./SEO";
 import hero4 from "./assets/hero4.png";
 
 // ── Contact Details ───────────────────────────────────────────────────────────
@@ -214,13 +215,19 @@ export default function ContactPage() {
 
   return (
     <div className="font-['Barlow',sans-serif] text-[#1a1a2e] min-h-screen flex flex-col">
+      <SEO
+        title="Contact Doctor Fittings | Get a Quote for Window Hardware in Rajkot"
+        description="Contact Doctor Fittings for bulk quotes, technical support, or inquiries about our aluminium window hardware, door handles, and wire mesh. Located in Rajkot, Gujarat. Call +91 96645 35583."
+        path="/contact"
+        keywords="contact doctor fittings, window hardware quote rajkot, bulk hardware order gujarat, hardware supplier phone number rajkot"
+      />
       <Navbar activeLink="Contact" />
 
       {/* ── HERO ── */}
       <div className="relative bg-[#1e2a6e] px-6 md:px-12 py-14 md:py-20 text-center overflow-hidden">
         <img
           src={hero4}
-          alt="Contact Hero"
+          alt="Contact Doctor Fittings Rajkot Gujarat Window Hardware Supplier"
           className="absolute inset-0 w-full h-full object-cover opacity-40"
           style={{ zIndex: 0 }}
         />

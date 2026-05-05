@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Navbar, Footer } from "./HomePage";
 import { ProductCard, QuoteModal } from "./ProductCard";
+import SEO from "./SEO";
 
 // -- Hero Image
 import productHero from "./assets/product-hero.png";
@@ -150,6 +151,11 @@ export default function CategoryPage() {
   if (!category) {
     return (
       <div className="font-['Barlow',sans-serif] text-[#1a1a2e] min-h-screen flex flex-col">
+        <SEO
+          title="Category Not Found | Doctor Fittings"
+          description="The category you are looking for does not exist. Browse our full range of aluminium window hardware products."
+          path={`/products/category?cat=${catSlug}`}
+        />
         <Navbar activeLink="Products" />
         <div className="flex-1 flex items-center justify-center bg-[#f4f6fb]">
           <div className="text-center">
@@ -172,15 +178,48 @@ export default function CategoryPage() {
     );
   }
 
+  // Build Product schema for this category
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: category.title,
+    description: category.description,
+    numberOfItems: category.products.length,
+    itemListElement: category.products.map((product, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Product",
+        name: `${product.name} ${product.code}`,
+        description: `${product.name} - ${product.code}, Size: ${product.size}. Premium quality ${category.title.toLowerCase()} from Doctor Fittings Rajkot.`,
+        brand: { "@type": "Brand", name: "Doctor Fittings" },
+        category: category.title,
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/InStock",
+          priceCurrency: "INR",
+          seller: { "@type": "Organization", name: "Doctor Fittings" },
+        },
+      },
+    })),
+  };
+
   return (
     <div className="font-['Barlow',sans-serif] text-[#1a1a2e] min-h-screen flex flex-col">
+      <SEO
+        title={`${category.title} - Premium ${category.title} Hardware | Doctor Fittings`}
+        description={`Shop premium ${category.title.toLowerCase()} from Doctor Fittings Rajkot. ${category.description} Best prices for bulk orders across Gujarat and India.`}
+        path={`/products/category?cat=${catSlug}`}
+        keywords={`${category.title.toLowerCase()}, ${category.title.toLowerCase()} rajkot, best ${category.title.toLowerCase()} in rajkot, ${category.title.toLowerCase()} wholesale, ${category.title.toLowerCase()} manufacturer gujarat`}
+        schema={productSchema}
+      />
       <Navbar activeLink="Products" />
 
       {/* ── PAGE HERO ── */}
       <div className="relative bg-[#1e2a6e] px-6 md:px-12 py-12 md:py-16 overflow-hidden">
         <img
           src={productHero}
-          alt="Category Hero"
+          alt={`${category.title} Premium Hardware Collection Doctor Fittings Rajkot`}
           className="absolute inset-0 w-full h-full object-cover opacity-40"
           style={{ zIndex: 0 }}
         />

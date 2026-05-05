@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
+import SEO from "./SEO";
 // import logoSvg from "./assets/doctor-fittings-block.png";
 import logoSvg from "./assets/doctor-fittings.png";
 import hero1 from "./assets/hero1.png";
@@ -224,7 +225,7 @@ function Navbar({ activeLink = "Home" }) {
                       <div className="aspect-square bg-[#f4f6fb] overflow-hidden">
                         <img
                           src={cat.image}
-                          alt={cat.name}
+                          alt={`${cat.name} - Doctor Fittings Rajkot`}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                         />
                       </div>
@@ -351,13 +352,14 @@ function Footer() {
           <div className="flex items-center gap-2.5 mb-4">
             <img
               src={logoSvg}
-              alt="Doctor Fittings"
+              alt="Doctor Fittings Logo - Best Aluminium Window Hardware Shop in Rajkot"
               className="h-[3.75rem] w-auto"
             />
           </div>
           <p className="text-white/40 text-sm leading-relaxed max-w-[220px]">
             Premium aluminium window hardware manufacturer and wholesale
-            supplier in Rajkot, Gujarat, India.
+            supplier in Rajkot, Gujarat, India. Top door handle manufacturers in
+            Gujarat.
           </p>
         </div>
         {[
@@ -373,10 +375,11 @@ function Footer() {
           {
             title: "Products",
             links: [
-              ["Pipe Fittings", "/products"],
-              ["Valves", "/products"],
-              ["Connectors", "/products"],
-              ["Accessories", "/products"],
+              ["Sliding Window Locks", "/products"],
+              ["Window Rollers", "/products"],
+              ["Door Handles", "/products"],
+              ["SS Wire Mesh", "/products"],
+              ["UPVC Hardware", "/products"],
             ],
           },
           {
@@ -385,7 +388,10 @@ function Footer() {
               ["doctorfittingshardware@gmail.com", "#"],
               ["+91 96645 35583", "#"],
               ["+91 96240 75535", "#"],
-              ["Rajkot, Gujarat, India", "#"],
+              [
+                "Alakhdhani, Rolex Main Road, Unnati Industry, Plot No 175, Rajkot 360002, Gujarat, India",
+                "#",
+              ],
             ],
           },
         ].map(({ title, links }) => (
@@ -407,6 +413,16 @@ function Footer() {
             </ul>
           </div>
         ))}
+      </div>
+      {/* Local SEO Keywords Strip */}
+      <div className="border-t border-white/[0.05] px-8 md:px-12 py-4">
+        <p className="text-white/20 text-[0.65rem] text-center max-w-4xl mx-auto leading-relaxed">
+          Best hardware shop in Rajkot | Top door handle manufacturers in
+          Gujarat | Premium aluminium window fittings supplier | Window wire
+          mesh dealer Rajkot | UPVC window hardware wholesale Gujarat | Sliding
+          window lock manufacturer India | Doctor Fittings — serving Rajkot,
+          Ahmedabad, Surat, Vadodara, Jamnagar, Bhavnagar & all of Gujarat
+        </p>
       </div>
       <div className="border-t border-white/[0.07] text-center py-5 text-white/30 text-xs px-4">
         © 2026 Doctor Fittings. All rights reserved.
@@ -445,7 +461,7 @@ const heroSlides = [
       <>
         Your Trusted <span className="text-[#f5a623]">Hardware Partner</span>
         <br />
-        Since 2001
+        Since 2008
       </>
     ),
     sub: "From custom solutions to bulk orders — Doctor Fittings delivers quality, on time, every time.",
@@ -456,7 +472,7 @@ const heroSlides = [
       <>
         Your Trusted <span className="text-[#f5a623]">Hardware Partner</span>
         <br />
-        Since 2001
+        Since 2008
       </>
     ),
     sub: "From custom solutions to bulk orders — Doctor Fittings delivers quality, on time, every time.",
@@ -642,6 +658,12 @@ export default function HomePage() {
 
   return (
     <div className="font-['Barlow',sans-serif] text-[#1a1a2e]">
+      <SEO
+        title="Doctor Fittings | Premium Window Hardware & Door Handles in Rajkot"
+        description="Upgrade your space with Doctor Fittings. Rajkot's leading supplier of premium aluminium window hardware, designer door handles, and durable window wire mesh. Quality that fits perfectly."
+        path="/"
+        keywords="window hardware rajkot, aluminium window fittings, door handles rajkot, window wire mesh, best hardware shop in rajkot, window rollers gujarat, UPVC hardware rajkot, sliding window lock, premium door handles gujarat"
+      />
       <Navbar activeLink="Home" />
 
       {/* ── HERO CAROUSEL ── */}
@@ -657,7 +679,7 @@ export default function HomePage() {
             {/* Background image */}
             <img
               src={slide.image}
-              alt=""
+              alt="Doctor Fittings Premium Aluminium Window Hardware Rajkot Gujarat"
               className="absolute inset-0 w-full h-full object-cover"
             />
             {/* Gradient overlay: transparent-black from left to right */}
@@ -701,7 +723,7 @@ export default function HomePage() {
             </div>
             <div className="flex gap-10 flex-wrap">
               {[
-                ["25+", "Years Experience"],
+                ["18+", "Years Experience"],
                 ["500+", "Product Range"],
                 ["99.8%", "Quality Rate", true],
               ].map(([val, label, gold]) => (
@@ -1101,7 +1123,7 @@ export default function HomePage() {
               <div className="aspect-video bg-[#f4f6fb] overflow-hidden">
                 <img
                   src={image}
-                  alt={title}
+                  alt={`${title} - Premium Window Hardware by Doctor Fittings Rajkot`}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
