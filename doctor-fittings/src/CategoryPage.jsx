@@ -198,6 +198,10 @@ export default function CategoryPage() {
           "@type": "Offer",
           availability: "https://schema.org/InStock",
           priceCurrency: "INR",
+          price:
+            typeof product.price === "number" ? String(product.price) : "0",
+          priceValidUntil: "2027-12-31",
+          url: `https://doctorfittings.com/products/category?cat=${catSlug}`,
           seller: { "@type": "Organization", name: "Doctor Fittings" },
         },
       },
