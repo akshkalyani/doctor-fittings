@@ -425,7 +425,15 @@ function Footer() {
         </p>
       </div>
       <div className="border-t border-white/[0.07] text-center py-5 text-white/30 text-xs px-4">
-        © 2026 Doctor Fittings. All rights reserved.
+        © 2026 Doctor Fittings. All rights reserved. | Made with ❤️ by
+        <a
+          href="https://minaal.co.in/it"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white/50 hover:text-[#f5a623] underline transition-colors ml-1"
+        >
+          Minaal IT Solutions
+        </a>
       </div>
     </footer>
   );
