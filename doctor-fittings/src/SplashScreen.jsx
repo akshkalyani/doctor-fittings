@@ -1,5 +1,5 @@
 import React from "react";
-
+import logoSvg from "./assets/doctor-fittings.png";
 const SplashScreen = () => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#2D2B84]">
@@ -9,7 +9,7 @@ const SplashScreen = () => {
       */}
       <div className="animate-[scale-up_1s_ease-out_forwards] sm:max-w-md w-full px-8">
         <img
-          src="src/assets/doctor-fittings.png"
+          src={logoSvg}
           alt="Doctor Fittings Logo"
           className="w-full h-auto"
         />

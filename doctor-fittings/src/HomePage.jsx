@@ -567,11 +567,13 @@ export default function HomePage() {
   const products = [
     {
       title: "Sliding Window Lock",
+      slug: "sliding-window-lock",
       image: catSlidingLock,
       info: ["Code: RBPL-1101", "100 Pcs / Box", "Color: Silver"],
     },
     {
       title: "Dumal Window Sliding Rollers",
+      slug: "dumal-window-sliding-rollers",
       image: catDumalRollers,
       info: [
         "Code: RBD210P / RBD210E",
@@ -583,46 +585,55 @@ export default function HomePage() {
     },
     {
       title: "UPVC Sliding Roller",
+      slug: "upvc-window-sliding-rollers",
       image: catUPVC,
       info: ["Code: RB-UPVC 16MM", "3000 Pcs"],
     },
     {
       title: "Window Sliding Rollers (Premium)",
+      slug: "window-sliding-rollers-premium",
       image: catPremiumRollers,
       info: ["Code: RB-NS625P", "3000 Pcs", "Nylon MSG"],
     },
     {
       title: "Window Sliding Rollers (Economy)",
+      slug: "window-sliding-rollers-economy",
       image: catEconomyRollers,
       info: ["Code: RB-PS625E", "3000 Pcs"],
     },
     {
       title: "G & C Channel Door Sliding System",
+      slug: "g-c-channel-door-sliding-system",
       image: catGCChannel,
       info: ["Code: RB-DGE", "3000 Pcs"],
     },
     {
       title: "Window & Door Handle",
+      slug: "window-door-handle",
       image: catWindowDoorHandle,
       info: ["Code: RBH-3101", "Color: Mill Finish", "100 Pcs"],
     },
     {
       title: "Concealed Door Closer",
+      slug: "concealed-door-closer",
       image: catConcealedDoorCloser,
       info: ["Code: 060", "Color: Silver", "500 Pcs"],
     },
     {
       title: "Butt Hinges",
+      slug: "butt-hinges",
       image: catButtHinges,
       info: ["Code: RBBH-4102", "Color: Black / White", "400 Pcs"],
     },
     {
       title: "Corner Cleat Joints",
+      slug: "corner-cleat-joints",
       image: catCornerCleat,
       info: ["Code: RB-CC22", "Finish: Mill Finish", "1000 Pcs"],
     },
     {
       title: "Stainless Steel Wire Mesh",
+      slug: "stainless-steel-screen-mesh",
       image: catSSMesh,
       info: [
         "Length: 15–30 ft",
@@ -1122,9 +1133,9 @@ export default function HomePage() {
           Premium hardware engineered for window professionals
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-10">
-          {products.map(({ title, image, info }) => (
+          {products.map(({ title, slug, image, info }) => (
             <Link
-              to="/products"
+              to={slug ? `/products/category?cat=${slug}` : "/products"}
               key={title}
               className="group rounded-xl overflow-hidden border border-[#e2e6f0] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-200 no-underline bg-white"
             >

@@ -35,6 +35,10 @@ const accessoriesModules = import.meta.glob(
   "./assets/product-images/ACCESSORIES/*.{png,jpg,jpeg,JPG,JPEG,webp,WEBP}",
   { eager: true, import: "default" },
 );
+const stainlessSteelModules = import.meta.glob(
+  "./assets/product-images/STAINLESS-STEEL-SCREEN-MESH/*.{png,jpg,jpeg,JPG,JPEG,webp,WEBP}",
+  { eager: true, import: "default" },
+);
 
 const CATEGORY_DEFINITIONS = [
   {
@@ -105,8 +109,8 @@ const CATEGORY_DEFINITIONS = [
     title: "Stainless Steel Screen Mesh",
     slug: "stainless-steel-screen-mesh",
     categoryImageName: "STAINLESS STEEL SCREEN MESH.png",
-    modules: accessoriesModules,
-    include: (name) => /(mesh|screen)/i.test(name),
+    modules: stainlessSteelModules,
+    // include: (name) => /(mesh|screen)/i.test(name),
   },
 ];
 
