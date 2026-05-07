@@ -3,142 +3,10 @@ import { Link, useSearchParams } from "react-router-dom";
 import { Navbar, Footer } from "./HomePage";
 import { ProductCard, QuoteModal } from "./ProductCard";
 import SEO from "./SEO";
+import { CATEGORY_DATA } from "./productCatalogData";
 
 // -- Hero Image
 import productHero from "./assets/product-hero.png";
-
-// ── Sliding Window Lock images ────────────────────────────────────────────────
-import rbpl1101 from "./assets/product-images/sliding-window-lock/RBPL-1101.png";
-import rbpl1102 from "./assets/product-images/sliding-window-lock/RBPL-1102.png";
-import rbpl1103 from "./assets/product-images/sliding-window-lock/RBPL-1103.png";
-import rbpl1104 from "./assets/product-images/sliding-window-lock/RBPL-1104.png";
-import rbpl1105 from "./assets/product-images/sliding-window-lock/RBPL-1105.png";
-import rbpl1106 from "./assets/product-images/sliding-window-lock/RBPL-1106.png";
-import rbpl1107 from "./assets/product-images/sliding-window-lock/RBPL-1107.png";
-import rbpl1108 from "./assets/product-images/sliding-window-lock/RBPL-1108.png";
-import rbpl1109 from "./assets/product-images/sliding-window-lock/RBPL-1109.png";
-import rbpl1110 from "./assets/product-images/sliding-window-lock/RBPL-1110.png";
-import rbpl1111 from "./assets/product-images/sliding-window-lock/RBPL-1111.png";
-import rbpl1112 from "./assets/product-images/sliding-window-lock/RBPL-1112.png";
-
-// ── Category product data ─────────────────────────────────────────────────────
-const CATEGORY_DATA = {
-  "sliding-window-lock": {
-    title: "Sliding Window Lock",
-    description:
-      "Premium quality sliding window locks available in silver finish. Box packaging of 100 pcs.",
-    products: [
-      {
-        name: "Sliding Window Lock",
-        code: "RBPL-1101",
-        size: "Standard",
-        price: "On Request",
-        unit: "PCS",
-        category: "Sliding Window Lock",
-        image: rbpl1101,
-      },
-      {
-        name: "Sliding Window Lock",
-        code: "RBPL-1102",
-        size: "Standard",
-        price: "On Request",
-        unit: "PCS",
-        category: "Sliding Window Lock",
-        image: rbpl1102,
-      },
-      {
-        name: "Sliding Window Lock",
-        code: "RBPL-1103",
-        size: "Standard",
-        price: "On Request",
-        unit: "PCS",
-        category: "Sliding Window Lock",
-        image: rbpl1103,
-      },
-      {
-        name: "Sliding Window Lock",
-        code: "RBPL-1104",
-        size: "Standard",
-        price: "On Request",
-        unit: "PCS",
-        category: "Sliding Window Lock",
-        image: rbpl1104,
-      },
-      {
-        name: "Sliding Window Lock",
-        code: "RBPL-1105",
-        size: "Standard",
-        price: "On Request",
-        unit: "PCS",
-        category: "Sliding Window Lock",
-        image: rbpl1105,
-      },
-      {
-        name: "Sliding Window Lock",
-        code: "RBPL-1106",
-        size: "Standard",
-        price: "On Request",
-        unit: "PCS",
-        category: "Sliding Window Lock",
-        image: rbpl1106,
-      },
-      {
-        name: "Sliding Window Lock",
-        code: "RBPL-1107",
-        size: "Standard",
-        price: "On Request",
-        unit: "PCS",
-        category: "Sliding Window Lock",
-        image: rbpl1107,
-      },
-      {
-        name: "Sliding Window Lock",
-        code: "RBPL-1108",
-        size: "Standard",
-        price: "On Request",
-        unit: "PCS",
-        category: "Sliding Window Lock",
-        image: rbpl1108,
-      },
-      {
-        name: "Sliding Window Lock",
-        code: "RBPL-1109",
-        size: "Standard",
-        price: "On Request",
-        unit: "PCS",
-        category: "Sliding Window Lock",
-        image: rbpl1109,
-      },
-      {
-        name: "Sliding Window Lock",
-        code: "RBPL-1110",
-        size: "Standard",
-        price: "On Request",
-        unit: "PCS",
-        category: "Sliding Window Lock",
-        image: rbpl1110,
-      },
-      {
-        name: "Sliding Window Lock",
-        code: "RBPL-1111",
-        size: "Standard",
-        price: "On Request",
-        unit: "PCS",
-        category: "Sliding Window Lock",
-        image: rbpl1111,
-      },
-      {
-        name: "Sliding Window Lock",
-        code: "RBPL-1112",
-        size: "Standard",
-        price: "On Request",
-        unit: "PCS",
-        category: "Sliding Window Lock",
-        image: rbpl1112,
-      },
-    ],
-  },
-};
 
 // ── CategoryPage ──────────────────────────────────────────────────────────────
 export default function CategoryPage() {
@@ -147,6 +15,7 @@ export default function CategoryPage() {
 
   const catSlug = searchParams.get("cat") || "";
   const category = CATEGORY_DATA[catSlug];
+  const categoryDescription = `Browse ${category?.title || "product"} items with matching product images and names from our latest catalogue.`;
 
   if (!category) {
     return (
@@ -183,23 +52,22 @@ export default function CategoryPage() {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: category.title,
-    description: category.description,
+    description: categoryDescription,
     numberOfItems: category.products.length,
     itemListElement: category.products.map((product, index) => ({
       "@type": "ListItem",
       position: index + 1,
       item: {
         "@type": "Product",
-        name: `${product.name} ${product.code}`,
-        description: `${product.name} - ${product.code}, Size: ${product.size}. Premium quality ${category.title.toLowerCase()} from Doctor Fittings Rajkot.`,
+        name: product.name,
+        description: `${product.name} in ${category.title} by Doctor Fittings.`,
         brand: { "@type": "Brand", name: "Doctor Fittings" },
         category: category.title,
         offers: {
           "@type": "Offer",
           availability: "https://schema.org/InStock",
           priceCurrency: "INR",
-          price:
-            typeof product.price === "number" ? String(product.price) : "0",
+          price: typeof product.price === "number" ? String(product.price) : "0",
           priceValidUntil: "2027-12-31",
           url: `https://doctorfittings.com/products/category?cat=${catSlug}`,
           seller: { "@type": "Organization", name: "Doctor Fittings" },
@@ -212,7 +80,7 @@ export default function CategoryPage() {
     <div className="font-['Barlow',sans-serif] text-[#1a1a2e] min-h-screen flex flex-col">
       <SEO
         title={`${category.title} - Premium ${category.title} Hardware | Doctor Fittings`}
-        description={`Shop premium ${category.title.toLowerCase()} from Doctor Fittings Rajkot. ${category.description} Best prices for bulk orders across Gujarat and India.`}
+        description={`Shop premium ${category.title.toLowerCase()} from Doctor Fittings Rajkot. ${categoryDescription}`}
         path={`/products/category?cat=${catSlug}`}
         keywords={`${category.title.toLowerCase()}, ${category.title.toLowerCase()} rajkot, best ${category.title.toLowerCase()} in rajkot, ${category.title.toLowerCase()} wholesale, ${category.title.toLowerCase()} manufacturer gujarat`}
         schema={productSchema}
@@ -249,7 +117,7 @@ export default function CategoryPage() {
               {category.title}
             </h1>
             <p className="text-white/65 text-sm md:text-base max-w-xl">
-              {category.description}
+              {categoryDescription}
             </p>
             <div className="mt-6 inline-flex items-center gap-6 bg-white/10 border border-white/15 rounded-xl px-5 py-3">
               <div className="text-center">
@@ -260,15 +128,15 @@ export default function CategoryPage() {
               </div>
               <div className="text-center">
                 <div className="font-['Barlow_Condensed',sans-serif] font-black text-xl text-[#f5a623]">
-                  100 Pcs
+                  Live
                 </div>
-                <div className="text-white/55 text-xs mt-0.5">Box Size</div>
+                <div className="text-white/55 text-xs mt-0.5">Catalog</div>
               </div>
               <div className="text-center">
                 <div className="font-['Barlow_Condensed',sans-serif] font-black text-xl text-[#f5a623]">
-                  Silver
+                  Updated
                 </div>
-                <div className="text-white/55 text-xs mt-0.5">Color</div>
+                <div className="text-white/55 text-xs mt-0.5">Assets</div>
               </div>
             </div>
           </div>
