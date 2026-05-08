@@ -1,0 +1,2174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARIES Hardware — Ashik Enterprises | Premium Architectural Hardware</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<style>
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --gold-pale: #F5E6C0;
+  --dark: #0D0D0D;
+  --dark-2: #141414;
+  --dark-3: #1A1A1A;
+  --dark-4: #222222;
+  --mid: #2E2E2E;
+  --text: #E8E6E0;
+  --text-muted: #888880;
+  --text-dim: #555550;
+  --white: #FAF9F6;
+  --accent: #B87333;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--dark);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Custom Cursor */
+.cursor {
+  width: 10px; height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+}
+.cursor-follower {
+  width: 36px; height: 36px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: all 0.18s ease;
+  opacity: 0.5;
+}
+body:hover .cursor { opacity: 1; }
+
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  pointer-events: none;
+  z-index: 9997;
+  opacity: 0.4;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 24px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  background: rgba(13,13,13,0.92);
+  backdrop-filter: blur(20px);
+  padding: 16px 60px;
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+.nav-logo-mark {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: var(--dark);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.nav-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.nav-logo-text span:first-child {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+.nav-logo-text span:last-child {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  color: var(--dark) !important;
+  padding: 10px 24px;
+  border-radius: 2px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.nav-cta::after { display: none; }
+.nav-cta:hover { opacity: 0.85; color: var(--dark) !important; }
+
+/* HERO */
+.hero {
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(184,115,51,0.04) 0%, transparent 50%),
+    var(--dark);
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 80px;
+  width: 100%;
+}
+.hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 40px; height: 1px;
+  background: var(--gold);
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(52px, 6vw, 90px);
+  font-weight: 900;
+  line-height: 0.95;
+  color: var(--white);
+  margin-bottom: 32px;
+}
+.hero-title em {
+  font-style: italic;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--gold);
+}
+.hero-sub {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 480px;
+  margin-bottom: 48px;
+}
+.hero-actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--accent) 100%);
+  color: var(--dark);
+  padding: 16px 36px;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: none;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+.btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+.btn-ghost {
+  color: var(--text-muted);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s;
+  cursor: none;
+}
+.btn-ghost:hover { color: var(--gold); }
+.btn-ghost-arrow { font-size: 20px; transition: transform 0.3s; }
+.btn-ghost:hover .btn-ghost-arrow { transform: translateX(4px); }
+
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.hero-stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 44px;
+  color: var(--gold);
+  line-height: 1;
+}
+.hero-stat-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* Hero Visual */
+.hero-visual {
+  position: relative;
+  height: 580px;
+}
+.hero-visual-frame {
+  position: absolute;
+  right: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 460px;
+  height: 520px;
+  background: var(--dark-3);
+  border: 1px solid rgba(201,168,76,0.2);
+  overflow: hidden;
+}
+.hero-visual-frame::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.hero-arch-svg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #181818 0%, #111 100%);
+}
+.shimmer-card {
+  position: absolute;
+  background: var(--dark-4);
+  border: 1px solid rgba(201,168,76,0.15);
+  padding: 20px 24px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.shimmer-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.08), transparent);
+  animation: shimmer 3s infinite;
+}
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+.hero-badge {
+  bottom: 40px; left: -60px;
+  padding: 16px 20px;
+}
+.hero-badge-top { font-size: 10px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 4px; }
+.hero-badge-mid { font-family: 'Bebas Neue'; font-size: 28px; color: var(--white); }
+.hero-badge-sub { font-size: 10px; color: var(--text-dim); margin-top: 2px; }
+
+.hero-tag {
+  top: 60px; left: -40px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-tag-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{ opacity:1; transform: scale(1); } 50%{ opacity:0.5; transform: scale(1.3); } }
+.hero-tag-text { font-size: 12px; color: var(--text-muted); }
+
+.hero-corner-tl, .hero-corner-br {
+  position: absolute;
+  width: 20px; height: 20px;
+  border-color: var(--gold);
+  border-style: solid;
+}
+.hero-corner-tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.hero-corner-br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+/* MARQUEE */
+.marquee-section {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 20px 0;
+  overflow: hidden;
+  background: var(--dark-2);
+  position: relative;
+  z-index: 2;
+}
+.marquee-track {
+  display: flex;
+  gap: 0;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 40px;
+  white-space: nowrap;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.marquee-item span.dot {
+  color: var(--gold);
+  font-size: 18px;
+  line-height: 1;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* SECTION STYLES */
+section { position: relative; }
+.section-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 120px 60px;
+}
+.section-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 30px; height: 1px;
+  background: var(--gold);
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 4vw, 64px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--white);
+}
+.section-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* ABOUT */
+.about-section { background: var(--dark-2); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+.about-left { }
+.about-desc {
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.9;
+  margin-top: 32px;
+}
+.about-highlights {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.about-highlight {
+  padding: 24px;
+  border: 1px solid rgba(201,168,76,0.12);
+  background: rgba(201,168,76,0.03);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.about-highlight::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--gold);
+  transition: width 0.4s;
+}
+.about-highlight:hover::before { width: 100%; }
+.about-highlight:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.05); }
+.ah-icon { font-size: 28px; margin-bottom: 12px; }
+.ah-title { font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: var(--white); font-weight: 600; margin-bottom: 6px; }
+.ah-val { font-size: 13px; color: var(--text-dim); }
+
+.about-right {
+  position: relative;
+}
+.company-card {
+  background: var(--dark-3);
+  border: 1px solid rgba(201,168,76,0.15);
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+}
+.company-card::before {
+  content: 'ARIES';
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  font-family: 'Bebas Neue';
+  font-size: 100px;
+  color: rgba(201,168,76,0.03);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.company-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.company-logo-hex {
+  width: 60px; height: 60px;
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  font-family: 'Bebas Neue';
+  font-size: 28px;
+  color: var(--dark);
+}
+.company-name { font-family: 'Playfair Display'; font-size: 22px; color: var(--white); }
+.company-sub { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-top: 2px; }
+.company-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.info-item { }
+.info-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px; }
+.info-value { font-size: 14px; color: var(--text); font-weight: 500; }
+.info-value.gold { color: var(--gold); font-family: 'Bebas Neue'; font-size: 20px; letter-spacing: 1px; }
+
+/* PRODUCTS */
+.products-section { background: var(--dark); }
+.products-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 64px;
+}
+.view-all-link {
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.3s;
+}
+.view-all-link:hover { gap: 14px; }
+
+.category-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  overflow-x: auto;
+}
+.cat-tab {
+  padding: 12px 28px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  cursor: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s;
+  white-space: nowrap;
+  background: none;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  font-family: 'DM Sans', sans-serif;
+}
+.cat-tab.active, .cat-tab:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.product-card {
+  background: var(--dark-3);
+  position: relative;
+  overflow: hidden;
+  cursor: none;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.product-card:hover { transform: translateY(-4px); z-index: 2; }
+.product-card-img {
+  width: 100%;
+  height: 240px;
+  background: var(--dark-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.product-card-img-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  color: rgba(201,168,76,0.15);
+  background: linear-gradient(160deg, #1a1a1a, #111);
+  transition: transform 0.5s;
+}
+.product-card:hover .product-card-img-inner { transform: scale(1.05); }
+.product-card-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13,13,13,0.8) 0%, transparent 60%);
+}
+.product-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(201,168,76,0.06) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+.product-card:hover .product-shimmer { transform: translateX(100%); }
+.product-card-body {
+  padding: 28px 28px 24px;
+  border-top: 1px solid rgba(201,168,76,0.08);
+}
+.product-card-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: var(--white);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.product-card-specs {
+  list-style: none;
+  margin-bottom: 16px;
+}
+.product-card-specs li {
+  font-size: 11px;
+  color: var(--text-dim);
+  padding: 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.product-card-specs li::before {
+  content: '';
+  width: 4px; height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.product-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.product-price {
+  font-family: 'Bebas Neue';
+  font-size: 26px;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+.product-price span { font-size: 14px; color: var(--text-dim); font-family: 'DM Sans'; }
+.product-quote-btn {
+  background: none;
+  border: 1px solid rgba(201,168,76,0.3);
+  color: var(--gold);
+  padding: 8px 18px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: none;
+  font-family: 'DM Sans';
+  transition: all 0.3s;
+}
+.product-quote-btn:hover {
+  background: var(--gold);
+  color: var(--dark);
+  border-color: var(--gold);
+}
+
+/* FEATURED / HIGHLIGHT CARD */
+.product-card.featured {
+  grid-column: span 1;
+  background: linear-gradient(160deg, #1a1510 0%, var(--dark-3) 100%);
+  border: 1px solid rgba(201,168,76,0.2);
+}
+.featured-badge {
+  position: absolute;
+  top: 20px; right: 20px;
+  background: var(--gold);
+  color: var(--dark);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  font-weight: 600;
+  z-index: 3;
+}
+
+/* WHY CHOOSE */
+.why-section {
+  background: var(--dark-2);
+  overflow: hidden;
+}
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.why-left { }
+.why-items { margin-top: 48px; display: flex; flex-direction: column; gap: 0; }
+.why-item {
+  display: flex;
+  gap: 24px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  position: relative;
+  overflow: hidden;
+}
+.why-item:last-child { border-bottom: none; }
+.why-num {
+  font-family: 'Bebas Neue';
+  font-size: 48px;
+  color: rgba(201,168,76,0.1);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 60px;
+  transition: color 0.3s;
+}
+.why-item:hover .why-num { color: rgba(201,168,76,0.4); }
+.why-content { }
+.why-title { font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+.why-desc { font-size: 14px; color: var(--text-dim); line-height: 1.7; }
+
+.why-right {
+  position: relative;
+  height: 600px;
+}
+.metrics-display {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.metric-bar {
+  flex: 1;
+  background: var(--dark-3);
+  border: 1px solid rgba(201,168,76,0.08);
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.metric-bar:hover { border-color: rgba(201,168,76,0.25); }
+.metric-bar::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: var(--w, 60%);
+  background: linear-gradient(90deg, rgba(201,168,76,0.04) 0%, transparent 100%);
+  border-right: 1px solid rgba(201,168,76,0.15);
+}
+.metric-icon { font-size: 32px; z-index: 1; flex-shrink: 0; }
+.metric-text { z-index: 1; }
+.metric-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px; }
+.metric-value { font-family: 'Bebas Neue'; font-size: 36px; color: var(--gold); letter-spacing: 1px; }
+.metric-sub { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+
+/* TESTIMONIALS */
+.testimonials-section { background: var(--dark); }
+.testimonials-header { margin-bottom: 64px; }
+.reviews-rating-bar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 32px;
+}
+.big-rating {
+  font-family: 'Bebas Neue';
+  font-size: 72px;
+  color: var(--gold);
+  line-height: 1;
+}
+.rating-details { }
+.stars { color: var(--gold); font-size: 20px; letter-spacing: 2px; margin-bottom: 6px; }
+.stars-gray { color: var(--text-dim); }
+.rating-count { font-size: 12px; color: var(--text-dim); letter-spacing: 1px; }
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 48px;
+}
+.testimonial-card {
+  background: var(--dark-3);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.testimonial-card:hover { background: var(--dark-4); }
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: 20px; right: 24px;
+  font-family: 'Playfair Display';
+  font-size: 100px;
+  color: rgba(201,168,76,0.06);
+  line-height: 1;
+}
+.tc-stars {
+  color: var(--gold);
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+.tc-text {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 28px;
+  font-style: italic;
+}
+.tc-footer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.tc-avatar {
+  width: 40px; height: 40px;
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--dark);
+}
+.tc-name { font-size: 14px; font-weight: 600; color: var(--white); }
+.tc-location { font-size: 11px; color: var(--text-dim); letter-spacing: 1px; }
+.tc-product { font-size: 10px; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
+
+/* CATEGORIES STRIP */
+.categories-section { background: var(--dark-2); overflow: hidden; }
+.cat-scroll-wrapper {
+  display: flex;
+  gap: 2px;
+  margin-top: 60px;
+  overflow: hidden;
+}
+.cat-card {
+  flex: 0 0 calc(25% - 1.5px);
+  background: var(--dark-3);
+  padding: 40px 32px;
+  border-bottom: 2px solid transparent;
+  cursor: none;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+.cat-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 0;
+  background: linear-gradient(to top, rgba(201,168,76,0.06), transparent);
+  transition: height 0.4s;
+}
+.cat-card:hover { border-bottom-color: var(--gold); }
+.cat-card:hover::before { height: 100%; }
+.cat-icon { font-size: 40px; margin-bottom: 20px; }
+.cat-name { font-family: 'Playfair Display'; font-size: 20px; color: var(--white); margin-bottom: 10px; }
+.cat-count { font-size: 11px; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; }
+.cat-arrow {
+  position: absolute;
+  bottom: 32px; right: 32px;
+  color: var(--gold);
+  font-size: 20px;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.3s;
+}
+.cat-card:hover .cat-arrow { opacity: 1; transform: translateX(0); }
+
+/* CONTACT */
+.contact-section {
+  background: var(--dark);
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+.contact-left { }
+.contact-info-items { margin-top: 48px; display: flex; flex-direction: column; gap: 32px; }
+.ci-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.ci-icon {
+  width: 48px; height: 48px;
+  border: 1px solid rgba(201,168,76,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+.ci-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px; }
+.ci-value { font-size: 15px; color: var(--text); line-height: 1.6; }
+.ci-value a { color: var(--gold); text-decoration: none; }
+
+.contact-right { }
+.contact-form {
+  background: var(--dark-3);
+  border: 1px solid rgba(201,168,76,0.1);
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+}
+.contact-form::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--accent), transparent);
+}
+.form-title { font-family: 'Playfair Display'; font-size: 28px; color: var(--white); margin-bottom: 32px; }
+.form-group { margin-bottom: 24px; }
+.form-group label { display: block; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 10px; }
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text);
+  padding: 14px 18px;
+  font-family: 'DM Sans';
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+  cursor: none;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+  border-color: var(--gold);
+}
+.form-group textarea { height: 100px; resize: none; }
+.form-group select option { background: var(--dark-3); }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  border: none;
+  color: var(--dark);
+  padding: 16px;
+  font-family: 'DM Sans';
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: none;
+  transition: all 0.3s;
+  margin-top: 8px;
+}
+.submit-btn:hover { opacity: 0.85; transform: translateY(-2px); }
+
+/* FOOTER */
+footer {
+  background: var(--dark-2);
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 60px 48px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.footer-brand { }
+.footer-logo { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+.footer-logo-hex {
+  width: 48px; height: 48px;
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue';
+  font-size: 22px;
+  color: var(--dark);
+}
+.footer-brand-name { font-family: 'Bebas Neue'; font-size: 24px; letter-spacing: 3px; color: var(--gold); }
+.footer-brand-sub { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); }
+.footer-desc { font-size: 13px; color: var(--text-dim); line-height: 1.8; max-width: 260px; }
+.footer-gst { margin-top: 20px; font-size: 11px; color: var(--text-dim); }
+.footer-gst strong { color: var(--gold); }
+
+.footer-col h4 {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.footer-col ul li a {
+  font-size: 13px;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-col ul li a:hover { color: var(--gold); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-copy { font-size: 12px; color: var(--text-dim); }
+.footer-copy strong { color: var(--gold); }
+.footer-iec { font-size: 11px; color: var(--text-dim); }
+
+/* FLOATING ELEMENTS */
+.floating-cta {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 500;
+}
+.floating-btn {
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  color: var(--dark);
+  border: none;
+  padding: 16px 28px;
+  font-family: 'DM Sans';
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s;
+  box-shadow: 0 8px 32px rgba(201,168,76,0.3);
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+.floating-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(201,168,76,0.4); }
+.floating-icon { font-size: 18px; }
+
+/* SCROLL INDICATOR */
+.scroll-indicator {
+  position: absolute;
+  bottom: 48px;
+  left: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  z-index: 3;
+}
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--gold));
+  position: relative;
+  overflow: hidden;
+}
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gold);
+  animation: scrollDown 1.8s ease infinite;
+}
+@keyframes scrollDown {
+  0% { top: -100%; }
+  100% { top: 200%; }
+}
+.scroll-text {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  writing-mode: vertical-rl;
+}
+
+/* GSAP initial states */
+.reveal-up { opacity: 0; transform: translateY(40px); }
+.reveal-left { opacity: 0; transform: translateX(-40px); }
+.reveal-right { opacity: 0; transform: translateX(40px); }
+.reveal-fade { opacity: 0; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-content, .about-grid, .why-grid, .contact-grid { grid-template-columns: 1fr; gap: 60px; }
+  .hero-visual { display: none; }
+  .products-grid { grid-template-columns: 1fr 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .section-inner { padding: 80px 30px; }
+  nav { padding: 20px 30px; }
+  .nav-links { gap: 20px; }
+  .cat-card { flex: 0 0 calc(50% - 1px); }
+}
+
+@media (max-width: 768px) {
+  .products-grid, .testimonials-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; gap: 40px; }
+  .about-highlights { grid-template-columns: 1fr; }
+  .hero-stats { gap: 24px; }
+  .company-info-grid { grid-template-columns: 1fr; }
+  .contact-form { padding: 28px; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .nav-links { display: none; }
+  .cat-card { flex: 0 0 calc(100% - 0px); }
+  .hero-content { padding: 0 30px; }
+  .metrics-display { height: auto; }
+  .why-right { height: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+
+<!-- Floating CTA -->
+<div class="floating-cta">
+  <button class="floating-btn" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">
+    <span class="floating-icon">💬</span>
+    Get Quote
+  </button>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">A</div>
+    <div class="nav-logo-text">
+      <span>ARIES</span>
+      <span>Hardware & Fittings</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#categories">Categories</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Get Quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow reveal-up">Established 2010 · Mumbai, India</div>
+      <h1 class="hero-title reveal-up">
+        Precision<br>
+        Built for<br>
+        <em>Every Opening</em>
+      </h1>
+      <p class="hero-sub reveal-up">
+        Premium architectural hardware for windows and doors. From concealed locks to friction stays — engineered for homes, apartments & offices across India.
+      </p>
+      <div class="hero-actions reveal-up">
+        <a href="#products" class="btn-primary">Explore Products</a>
+        <a href="#contact" class="btn-ghost">Request Quote <span class="btn-ghost-arrow">→</span></a>
+      </div>
+
+      <div class="hero-stats reveal-up">
+        <div>
+          <div class="hero-stat-num">14+</div>
+          <div class="hero-stat-label">Years Active</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">8</div>
+          <div class="hero-stat-label">Categories</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">25Cr</div>
+          <div class="hero-stat-label">Annual Turnover</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">83%</div>
+          <div class="hero-stat-label">Response Rate</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal-right">
+      <div class="hero-visual-frame">
+        <div class="hero-corner-tl"></div>
+        <div class="hero-corner-br"></div>
+        <div class="hero-arch-svg">
+          <!-- Architectural hardware SVG illustration -->
+          <svg viewBox="0 0 420 480" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <defs>
+              <linearGradient id="gGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#C9A84C"/>
+                <stop offset="100%" style="stop-color:#B87333"/>
+              </linearGradient>
+              <linearGradient id="gSilver" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#888"/>
+                <stop offset="100%" style="stop-color:#444"/>
+              </linearGradient>
+            </defs>
+            <!-- Window frame outer -->
+            <rect x="60" y="60" width="300" height="360" rx="4" fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="2"/>
+            <!-- Window frame inner -->
+            <rect x="75" y="75" width="270" height="330" rx="2" fill="none" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
+            <!-- Cross bar -->
+            <line x1="75" y1="240" x2="345" y2="240" stroke="rgba(201,168,76,0.2)" stroke-width="8"/>
+            <line x1="210" y1="75" x2="210" y2="405" stroke="rgba(201,168,76,0.2)" stroke-width="8"/>
+            <!-- Handle on right -->
+            <rect x="320" y="210" width="14" height="60" rx="7" fill="url(#gGold)"/>
+            <circle cx="327" cy="240" r="6" fill="rgba(201,168,76,0.4)"/>
+            <!-- Lock on left -->
+            <rect x="86" y="218" width="24" height="44" rx="3" fill="url(#gSilver)"/>
+            <rect x="90" y="224" width="16" height="18" rx="2" fill="rgba(201,168,76,0.3)"/>
+            <circle cx="98" cy="252" r="5" fill="rgba(201,168,76,0.6)"/>
+            <!-- Roller at bottom -->
+            <ellipse cx="140" cy="396" rx="20" ry="10" fill="url(#gGold)" opacity="0.8"/>
+            <ellipse cx="280" cy="396" rx="20" ry="10" fill="url(#gGold)" opacity="0.8"/>
+            <!-- Hinge left -->
+            <rect x="62" y="110" width="16" height="40" rx="2" fill="url(#gGold)"/>
+            <rect x="62" y="300" width="16" height="40" rx="2" fill="url(#gGold)"/>
+            <!-- Corner brackets -->
+            <path d="M60 60 L80 60 L80 80" fill="none" stroke="rgba(201,168,76,0.6)" stroke-width="1.5"/>
+            <path d="M360 60 L340 60 L340 80" fill="none" stroke="rgba(201,168,76,0.6)" stroke-width="1.5"/>
+            <path d="M60 420 L80 420 L80 400" fill="none" stroke="rgba(201,168,76,0.6)" stroke-width="1.5"/>
+            <path d="M360 420 L340 420 L340 400" fill="none" stroke="rgba(201,168,76,0.6)" stroke-width="1.5"/>
+            <!-- ARIES text -->
+            <text x="210" y="450" text-anchor="middle" font-family="Bebas Neue, sans-serif" font-size="11" fill="rgba(201,168,76,0.3)" letter-spacing="6">ARIES HARDWARE</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="shimmer-card hero-badge">
+        <div class="hero-badge-top">ISO Certified</div>
+        <div class="hero-badge-mid">TRUSTED BRAND</div>
+        <div class="hero-badge-sub">Wholesaler & Importer Since 2010</div>
+      </div>
+
+      <div class="shimmer-card hero-tag">
+        <div class="hero-tag-dot"></div>
+        <div class="hero-tag-text">Available Across India</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <div class="scroll-text">Scroll</div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="dot">◆</span> Sliding Window Locks <span class="dot">◆</span></div>
+    <div class="marquee-item">Window Rollers & Bearings <span class="dot">◆</span></div>
+    <div class="marquee-item">Hydraulic Door Closers <span class="dot">◆</span></div>
+    <div class="marquee-item">UPVC Casement Handles <span class="dot">◆</span></div>
+    <div class="marquee-item">Friction Stay Hinges <span class="dot">◆</span></div>
+    <div class="marquee-item">Wire Mesh & Mosquito Nets <span class="dot">◆</span></div>
+    <div class="marquee-item">Deadbolt Lock Bodies <span class="dot">◆</span></div>
+    <div class="marquee-item">System Window Accessories <span class="dot">◆</span></div>
+    <!-- Repeat for seamless loop -->
+    <div class="marquee-item"><span class="dot">◆</span> Sliding Window Locks <span class="dot">◆</span></div>
+    <div class="marquee-item">Window Rollers & Bearings <span class="dot">◆</span></div>
+    <div class="marquee-item">Hydraulic Door Closers <span class="dot">◆</span></div>
+    <div class="marquee-item">UPVC Casement Handles <span class="dot">◆</span></div>
+    <div class="marquee-item">Friction Stay Hinges <span class="dot">◆</span></div>
+    <div class="marquee-item">Wire Mesh & Mosquito Nets <span class="dot">◆</span></div>
+    <div class="marquee-item">Deadbolt Lock Bodies <span class="dot">◆</span></div>
+    <div class="marquee-item">System Window Accessories <span class="dot">◆</span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-left">
+        <div class="section-label reveal-left">About Ashik Enterprises</div>
+        <h2 class="section-title reveal-left">Built on <em>Trust</em>,<br>Driven by<br>Precision</h2>
+        <p class="about-desc reveal-left">
+          Established in 2010, Ashik Enterprises has become a well-recognized name as a Wholesaler and Importer of premium architectural hardware. Operating from Mumbai, Maharashtra, we supply high-quality window and door hardware to builders, contractors, and retailers across India.
+        </p>
+        <div class="about-highlights">
+          <div class="about-highlight reveal-up">
+            <div class="ah-icon">🏭</div>
+            <div class="ah-title">Nature of Business</div>
+            <div class="ah-val">Trader — Retailer</div>
+          </div>
+          <div class="about-highlight reveal-up">
+            <div class="ah-icon">📋</div>
+            <div class="ah-title">Legal Status</div>
+            <div class="ah-val">Proprietorship Firm</div>
+          </div>
+          <div class="about-highlight reveal-up">
+            <div class="ah-icon">👥</div>
+            <div class="ah-title">Team Strength</div>
+            <div class="ah-val">11 – 25 Employees</div>
+          </div>
+          <div class="about-highlight reveal-up">
+            <div class="ah-icon">🌏</div>
+            <div class="ah-title">Import / Export</div>
+            <div class="ah-val">IEC: 0307000231</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-right reveal-right">
+        <div class="company-card">
+          <div class="company-card-header">
+            <div class="company-logo-hex">A</div>
+            <div>
+              <div class="company-name">Ashik Enterprises</div>
+              <div class="company-sub">Mumbai, Maharashtra · Est. 2010</div>
+            </div>
+          </div>
+          <div class="company-info-grid">
+            <div class="info-item">
+              <div class="info-label">GST Number</div>
+              <div class="info-value">27AAIPD4173D1Z0</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">GST Registration</div>
+              <div class="info-value">01 July 2017</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Annual Turnover</div>
+              <div class="info-value gold">₹5–25 CR</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Response Rate</div>
+              <div class="info-value gold">83%</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Contact</div>
+              <div class="info-value" style="color: var(--gold);">07942537745</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Owner</div>
+              <div class="info-value">Ashik Dhakad</div>
+            </div>
+            <div class="info-item" style="grid-column: span 2;">
+              <div class="info-label">Address</div>
+              <div class="info-value" style="font-size:13px; color: var(--text-dim);">Floor-2nd, 203 45, Abdul Rehman Street, Mandvi, Mumbai – 400003</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories-section" id="categories">
+  <div class="section-inner">
+    <div class="section-label reveal-up">Product Categories</div>
+    <h2 class="section-title reveal-up">8 Specialized <em>Categories</em></h2>
+    <div class="cat-scroll-wrapper reveal-up" id="catWrapper">
+      <div class="cat-card">
+        <div class="cat-icon">🔒</div>
+        <div class="cat-name">Window Locks & Handles</div>
+        <div class="cat-count">5+ Products</div>
+        <div class="cat-arrow">→</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">⚙️</div>
+        <div class="cat-name">Window Bearings</div>
+        <div class="cat-count">5+ Products</div>
+        <div class="cat-arrow">→</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🔧</div>
+        <div class="cat-name">System Accessories</div>
+        <div class="cat-count">5+ Products</div>
+        <div class="cat-arrow">→</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🪟</div>
+        <div class="cat-name">Mosquito Net</div>
+        <div class="cat-count">5+ Products</div>
+        <div class="cat-arrow">→</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🕸️</div>
+        <div class="cat-name">Wire Mesh</div>
+        <div class="cat-count">5+ Products</div>
+        <div class="cat-arrow">→</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🚪</div>
+        <div class="cat-name">Sliding Door Lock</div>
+        <div class="cat-count">4+ Products</div>
+        <div class="cat-arrow">→</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🔩</div>
+        <div class="cat-name">Window Hinges</div>
+        <div class="cat-count">3+ Products</div>
+        <div class="cat-arrow">→</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🏠</div>
+        <div class="cat-name">Door Closer</div>
+        <div class="cat-count">3+ Products</div>
+        <div class="cat-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-section" id="products">
+  <div class="section-inner">
+    <div class="products-header">
+      <div>
+        <div class="section-label reveal-left">Our Range</div>
+        <h2 class="section-title reveal-left">Featured <em>Products</em></h2>
+      </div>
+      <a href="https://www.arieshardware.in/architectural-harware-products.html" target="_blank" class="view-all-link reveal-right">
+        View All Products →
+      </a>
+    </div>
+
+    <div class="products-grid">
+
+      <div class="product-card reveal-up">
+        <div class="product-card-img">
+          <div class="product-card-img-inner">🔒</div>
+          <div class="product-shimmer"></div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Pop Up Window Handle</div>
+          <ul class="product-card-specs">
+            <li>Material: Zinc</li>
+            <li>Finish: Powder Coated</li>
+            <li>Usage: UPVC Window</li>
+          </ul>
+          <div class="product-card-footer">
+            <div class="product-price">₹345 <span>/ Piece</span></div>
+            <button class="product-quote-btn">Get Quote</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card featured reveal-up">
+        <div class="featured-badge">Best Seller</div>
+        <div class="product-card-img">
+          <div class="product-card-img-inner">🔐</div>
+          <div class="product-shimmer"></div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Concealed Sliding Window Lock</div>
+          <ul class="product-card-specs">
+            <li>Brand: ARIES</li>
+            <li>Material: Zinc Alloy</li>
+            <li>Type: Sliding Window</li>
+          </ul>
+          <div class="product-card-footer">
+            <div class="product-price">₹645 <span>/ Piece</span></div>
+            <button class="product-quote-btn">Get Quote</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal-up">
+        <div class="product-card-img">
+          <div class="product-card-img-inner">⚙️</div>
+          <div class="product-shimmer"></div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">20mm Sliding Door Window Roller</div>
+          <ul class="product-card-specs">
+            <li>Brand: Aries</li>
+            <li>Bracket: Long Adjustable</li>
+            <li>Usage: Sliding Window</li>
+          </ul>
+          <div class="product-card-footer">
+            <div class="product-price">₹75 <span>/ Piece</span></div>
+            <button class="product-quote-btn">Get Quote</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal-up">
+        <div class="product-card-img">
+          <div class="product-card-img-inner">🔩</div>
+          <div class="product-shimmer"></div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">UPVC Window Hinges</div>
+          <ul class="product-card-specs">
+            <li>Brand: Aries</li>
+            <li>Size: 2 inch</li>
+            <li>Material: Stainless Steel</li>
+          </ul>
+          <div class="product-card-footer">
+            <div class="product-price">₹177 <span>/ Piece</span></div>
+            <button class="product-quote-btn">Get Quote</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal-up">
+        <div class="product-card-img">
+          <div class="product-card-img-inner">🚪</div>
+          <div class="product-shimmer"></div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Hydraulic Door Closer</div>
+          <ul class="product-card-specs">
+            <li>Brand: ARIES</li>
+            <li>Type: Hydraulic / Overhead</li>
+            <li>Material: Aluminium</li>
+          </ul>
+          <div class="product-card-footer">
+            <div class="product-price">₹1,000 <span>/ Piece</span></div>
+            <button class="product-quote-btn">Get Quote</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal-up">
+        <div class="product-card-img">
+          <div class="product-card-img-inner">🕸️</div>
+          <div class="product-shimmer"></div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Aluminium Window Screen</div>
+          <ul class="product-card-specs">
+            <li>Material: Aluminium</li>
+            <li>Usage: Household</li>
+            <li>Type: Window Screen</li>
+          </ul>
+          <div class="product-card-footer">
+            <div class="product-price">₹15 <span>/ Sq Ft</span></div>
+            <button class="product-quote-btn">Get Quote</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal-up">
+        <div class="product-card-img">
+          <div class="product-card-img-inner">🔑</div>
+          <div class="product-shimmer"></div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">UPVC Crescent Lock (Short & Long)</div>
+          <ul class="product-card-specs">
+            <li>Material: Zinc Alloy</li>
+            <li>Type: Sliding Window</li>
+            <li>Packaging: 100 Pieces</li>
+          </ul>
+          <div class="product-card-footer">
+            <div class="product-price">₹156 <span>/ Piece</span></div>
+            <button class="product-quote-btn">Get Quote</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card featured reveal-up">
+        <div class="featured-badge">New</div>
+        <div class="product-card-img">
+          <div class="product-card-img-inner">📐</div>
+          <div class="product-shimmer"></div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Window Friction Stay (Set)</div>
+          <ul class="product-card-specs">
+            <li>Material: Stainless Steel</li>
+            <li>Size: 10 inch</li>
+            <li>Usage: Window Fitting</li>
+          </ul>
+          <div class="product-card-footer">
+            <div class="product-price">₹200 <span>/ Set</span></div>
+            <button class="product-quote-btn">Get Quote</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal-up">
+        <div class="product-card-img">
+          <div class="product-card-img-inner">🛡️</div>
+          <div class="product-shimmer"></div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Door Lock Body Combo Set</div>
+          <ul class="product-card-specs">
+            <li>Brand: Aries</li>
+            <li>Handle Type: Lever</li>
+            <li>Finish: Stainless Steel</li>
+          </ul>
+          <div class="product-card-footer">
+            <div class="product-price">₹1,000 <span>/ Piece</span></div>
+            <button class="product-quote-btn">Get Quote</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="why-section">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div class="why-left">
+        <div class="section-label reveal-left">Why Choose Us</div>
+        <h2 class="section-title reveal-left">The <em>Aries</em><br>Advantage</h2>
+        <div class="why-items">
+          <div class="why-item reveal-up">
+            <div class="why-num">01</div>
+            <div class="why-content">
+              <div class="why-title">Trusted Since 2010</div>
+              <div class="why-desc">Over 14 years of experience supplying architectural hardware to builders, contractors and retailers across India.</div>
+            </div>
+          </div>
+          <div class="why-item reveal-up">
+            <div class="why-num">02</div>
+            <div class="why-content">
+              <div class="why-title">ISO Certified Quality</div>
+              <div class="why-desc">All products meet stringent quality standards. Our ISO certification ensures consistent manufacturing excellence.</div>
+            </div>
+          </div>
+          <div class="why-item reveal-up">
+            <div class="why-num">03</div>
+            <div class="why-content">
+              <div class="why-title">Direct Importer</div>
+              <div class="why-desc">We import directly, allowing us to offer competitive wholesale pricing with no middlemen markups.</div>
+            </div>
+          </div>
+          <div class="why-item reveal-up">
+            <div class="why-num">04</div>
+            <div class="why-content">
+              <div class="why-title">Pan-India Supply</div>
+              <div class="why-desc">From Mumbai to Bengaluru, Chennai to Pune — we serve customers across every major Indian city and state.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-right reveal-right">
+        <div class="metrics-display">
+          <div class="metric-bar" style="--w: 83%;">
+            <div class="metric-icon">📞</div>
+            <div class="metric-text">
+              <div class="metric-label">Response Rate</div>
+              <div class="metric-value">83%</div>
+              <div class="metric-sub">Fast quote turnaround</div>
+            </div>
+          </div>
+          <div class="metric-bar" style="--w: 100%;">
+            <div class="metric-icon">📅</div>
+            <div class="metric-text">
+              <div class="metric-label">Years in Business</div>
+              <div class="metric-value">14+</div>
+              <div class="metric-sub">Est. 2010, Mumbai</div>
+            </div>
+          </div>
+          <div class="metric-bar" style="--w: 75%;">
+            <div class="metric-icon">🏭</div>
+            <div class="metric-text">
+              <div class="metric-label">Annual Turnover</div>
+              <div class="metric-value">₹5–25 CR</div>
+              <div class="metric-sub">Verified business scale</div>
+            </div>
+          </div>
+          <div class="metric-bar" style="--w: 90%;">
+            <div class="metric-icon">📦</div>
+            <div class="metric-text">
+              <div class="metric-label">Product Categories</div>
+              <div class="metric-value">8+</div>
+              <div class="metric-sub">Complete hardware range</div>
+            </div>
+          </div>
+          <div class="metric-bar" style="--w: 60%;">
+            <div class="metric-icon">👥</div>
+            <div class="metric-text">
+              <div class="metric-label">Team Size</div>
+              <div class="metric-value">11–25</div>
+              <div class="metric-sub">Dedicated professionals</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="reviews">
+  <div class="section-inner">
+    <div class="testimonials-header">
+      <div class="section-label reveal-up">Customer Reviews</div>
+      <h2 class="section-title reveal-up">What Our <em>Clients</em> Say</h2>
+      <div class="reviews-rating-bar reveal-up">
+        <div class="big-rating">3.1</div>
+        <div class="rating-details">
+          <div class="stars">★★★<span class="stars-gray">★★</span></div>
+          <div class="rating-count">8 Verified Reviews · IndiaMART Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card reveal-up">
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-text">"Great quality stainless steel wire mesh. Prompt delivery and the product was exactly as described. Highly recommended for bulk orders."</p>
+        <div class="tc-footer">
+          <div class="tc-avatar">U</div>
+          <div>
+            <div class="tc-name">UPVC Window SV Secure</div>
+            <div class="tc-location">Bengaluru, Karnataka</div>
+            <div class="tc-product">Stainless Steel Wire Mesh</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal-up">
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-text">"Good quality material. The wire mesh is durable and fits perfectly into our window systems. Will order again for our upcoming projects."</p>
+        <div class="tc-footer">
+          <div class="tc-avatar">A</div>
+          <div>
+            <div class="tc-name">Arjun Purohit</div>
+            <div class="tc-location">Karad, Maharashtra</div>
+            <div class="tc-product">Stainless Steel Wire Mesh</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal-up">
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-text">"The self closing hinges work beautifully. Smooth operation and sturdy build. Very satisfied with the product quality from Aries."</p>
+        <div class="tc-footer">
+          <div class="tc-avatar">J</div>
+          <div>
+            <div class="tc-name">Jay Rathore</div>
+            <div class="tc-location">Palghar, Maharashtra</div>
+            <div class="tc-product">Self Closing Hinges</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal-up">
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-text">"Ordered glass door handle for my office renovation. Arrived well packed and looks premium. Great value for the price point."</p>
+        <div class="tc-footer">
+          <div class="tc-avatar">A</div>
+          <div>
+            <div class="tc-name">Akash</div>
+            <div class="tc-location">Mumbai, Maharashtra</div>
+            <div class="tc-product">Glass Door Handle</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal-up">
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-text">"Consistent supply of window parts for our construction projects. Aries has become our go-to supplier for all hardware requirements."</p>
+        <div class="tc-footer">
+          <div class="tc-avatar">A</div>
+          <div>
+            <div class="tc-name">Arun Patekar</div>
+            <div class="tc-location">Pune, Maharashtra</div>
+            <div class="tc-product">Window Parts</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal-up">
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-text">"Good range of products available. The anodized aluminum profile was exactly what we needed for our custom window frames."</p>
+        <div class="tc-footer">
+          <div class="tc-avatar">C</div>
+          <div>
+            <div class="tc-name">Chotu Singh</div>
+            <div class="tc-location">Chennai, Tamil Nadu</div>
+            <div class="tc-product">Anodized Aluminum Profile</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="section-label reveal-left">Get In Touch</div>
+        <h2 class="section-title reveal-left">Start Your<br><em>Enquiry</em> Today</h2>
+        <div class="contact-info-items">
+          <div class="ci-item reveal-up">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">Our Address</div>
+              <div class="ci-value">Floor-2nd, 203/45, Abdul Rehman Street,<br>Popular Jagdishwari Palace, Mandvi<br>Mumbai – 400003, Maharashtra, India</div>
+            </div>
+          </div>
+          <div class="ci-item reveal-up">
+            <div class="ci-icon">📞</div>
+            <div>
+              <div class="ci-label">Phone</div>
+              <div class="ci-value"><a href="tel:07942537745">079-4253-7745</a></div>
+            </div>
+          </div>
+          <div class="ci-item reveal-up">
+            <div class="ci-icon">🏛️</div>
+            <div>
+              <div class="ci-label">GST Number</div>
+              <div class="ci-value">27AAIPD4173D1Z0</div>
+            </div>
+          </div>
+          <div class="ci-item reveal-up">
+            <div class="ci-icon">🌐</div>
+            <div>
+              <div class="ci-label">Import Export Code</div>
+              <div class="ci-value">IEC: 0307000231</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-right reveal-right">
+        <div class="contact-form">
+          <div class="form-title">Request a Quote</div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" placeholder="Full Name">
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" placeholder="+91 XXXXX XXXXX">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="you@company.com">
+          </div>
+          <div class="form-group">
+            <label>Product Interest</label>
+            <select>
+              <option value="">Select Category</option>
+              <option>Sliding Window Locks & Handles</option>
+              <option>Window Rollers / Bearings</option>
+              <option>System Window Accessories</option>
+              <option>Window Mosquito Net</option>
+              <option>Wire Mesh</option>
+              <option>Sliding Door Locks</option>
+              <option>Window Hinges</option>
+              <option>Door Closers</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Describe Your Requirement</label>
+            <textarea placeholder="Product name, quantity, specifications..."></textarea>
+          </div>
+          <button class="submit-btn" onclick="alert('Thank you! We will get in touch with you shortly. Call us at 07942537745 for immediate assistance.')">Send Enquiry →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-hex">A</div>
+          <div>
+            <div class="footer-brand-name">ARIES Hardware</div>
+            <div class="footer-brand-sub">Ashik Enterprises</div>
+          </div>
+        </div>
+        <p class="footer-desc">Premium architectural hardware for windows and doors. Trusted by builders and contractors across India since 2010.</p>
+        <div class="footer-gst">GST No: <strong>27AAIPD4173D1Z0</strong></div>
+        <div class="footer-gst" style="margin-top:6px;">IEC: <strong>0307000231</strong></div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#">Window Locks & Handles</a></li>
+          <li><a href="#">Window Bearings</a></li>
+          <li><a href="#">System Accessories</a></li>
+          <li><a href="#">Mosquito Net</a></li>
+          <li><a href="#">Wire Mesh</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>More Products</h4>
+        <ul>
+          <li><a href="#">Sliding Door Locks</a></li>
+          <li><a href="#">Window Hinges</a></li>
+          <li><a href="#">Door Closers</a></li>
+          <li><a href="#">UPVC Hardware</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Testimonials</a></li>
+          <li><a href="#">Agent Enquiry</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="https://www.arieshardware.in/" target="_blank">Original Website</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 <strong>Ashik Enterprises</strong> · All Rights Reserved · Mumbai, Maharashtra</div>
+      <div class="footer-iec">Owner: Ashik Dhakad · 07942537745</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// GSAP Animations
+gsap.registerPlugin(ScrollTrigger);
+
+// Custom Cursor
+const cursor = document.getElementById('cursor');
+const follower = document.getElementById('cursorFollower');
+document.addEventListener('mousemove', (e) => {
+  gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
+  gsap.to(follower, { x: e.clientX, y: e.clientY, duration: 0.3 });
+});
+document.querySelectorAll('a, button, .product-card, .cat-card, .about-highlight').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    gsap.to(follower, { scale: 1.8, opacity: 0.8, duration: 0.2 });
+    gsap.to(cursor, { scale: 0.6, duration: 0.2 });
+  });
+  el.addEventListener('mouseleave', () => {
+    gsap.to(follower, { scale: 1, opacity: 0.5, duration: 0.2 });
+    gsap.to(cursor, { scale: 1, duration: 0.2 });
+  });
+});
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Hero animations on load
+gsap.timeline({ delay: 0.3 })
+  .from('.hero-eyebrow', { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' })
+  .from('.hero-title', { opacity: 0, y: 40, duration: 0.8, ease: 'power3.out' }, '-=0.3')
+  .from('.hero-sub', { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' }, '-=0.4')
+  .from('.hero-actions', { opacity: 0, y: 20, duration: 0.5, ease: 'power2.out' }, '-=0.3')
+  .from('.hero-stats', { opacity: 0, y: 20, duration: 0.5, ease: 'power2.out' }, '-=0.2')
+  .from('.hero-visual', { opacity: 0, x: 60, duration: 0.8, ease: 'power3.out' }, '-=0.6')
+  .from('.hero-badge', { opacity: 0, x: -20, duration: 0.5, ease: 'power2.out' }, '-=0.3')
+  .from('.hero-tag', { opacity: 0, x: -20, duration: 0.5, ease: 'power2.out' }, '-=0.3');
+
+// Counter animation for hero stats
+function animateCounter(el, target, suffix = '') {
+  let start = 0;
+  const duration = 2000;
+  const step = (timestamp) => {
+    if (!start) start = timestamp;
+    const progress = Math.min((timestamp - start) / duration, 1);
+    const val = Math.floor(progress * target);
+    el.textContent = val + suffix;
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = target + suffix;
+  };
+  requestAnimationFrame(step);
+}
+
+// Scroll-triggered reveals
+document.querySelectorAll('.reveal-up').forEach(el => {
+  gsap.fromTo(el,
+    { opacity: 0, y: 50 },
+    {
+      opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+    }
+  );
+});
+
+document.querySelectorAll('.reveal-left').forEach(el => {
+  gsap.fromTo(el,
+    { opacity: 0, x: -50 },
+    {
+      opacity: 1, x: 0, duration: 0.8, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+    }
+  );
+});
+
+document.querySelectorAll('.reveal-right').forEach(el => {
+  gsap.fromTo(el,
+    { opacity: 0, x: 50 },
+    {
+      opacity: 1, x: 0, duration: 0.8, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+    }
+  );
+});
+
+// Stagger product cards
+gsap.fromTo('.product-card',
+  { opacity: 0, y: 60 },
+  {
+    opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.12,
+    scrollTrigger: { trigger: '.products-grid', start: 'top 80%' }
+  }
+);
+
+// Stagger testimonials
+gsap.fromTo('.testimonial-card',
+  { opacity: 0, y: 40 },
+  {
+    opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.1,
+    scrollTrigger: { trigger: '.testimonials-grid', start: 'top 80%' }
+  }
+);
+
+// Stagger category cards
+gsap.fromTo('.cat-card',
+  { opacity: 0, y: 40 },
+  {
+    opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.08,
+    scrollTrigger: { trigger: '.cat-scroll-wrapper', start: 'top 80%' }
+  }
+);
+
+// Metric bars animation
+gsap.fromTo('.metric-bar',
+  { opacity: 0, x: 60 },
+  {
+    opacity: 1, x: 0, duration: 0.6, ease: 'power3.out', stagger: 0.12,
+    scrollTrigger: { trigger: '.metrics-display', start: 'top 80%' }
+  }
+);
+
+// About highlights stagger
+gsap.fromTo('.about-highlight',
+  { opacity: 0, scale: 0.95 },
+  {
+    opacity: 1, scale: 1, duration: 0.5, ease: 'power2.out', stagger: 0.1,
+    scrollTrigger: { trigger: '.about-highlights', start: 'top 85%' }
+  }
+);
+
+// Why items
+gsap.fromTo('.why-item',
+  { opacity: 0, x: -30 },
+  {
+    opacity: 1, x: 0, duration: 0.6, ease: 'power2.out', stagger: 0.12,
+    scrollTrigger: { trigger: '.why-items', start: 'top 80%' }
+  }
+);
+
+// Floating CTA button
+gsap.from('.floating-cta', { opacity: 0, y: 20, duration: 0.5, delay: 2 });
+
+// Parallax hero grid
+gsap.to('.hero-grid', {
+  yPercent: 30,
+  ease: 'none',
+  scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+});
+
+// Contact info items
+gsap.fromTo('.ci-item',
+  { opacity: 0, x: -30 },
+  {
+    opacity: 1, x: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1,
+    scrollTrigger: { trigger: '.contact-info-items', start: 'top 85%' }
+  }
+);
+
+// Company card reveal
+gsap.fromTo('.company-card',
+  { opacity: 0, y: 40, scale: 0.98 },
+  {
+    opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'power3.out',
+    scrollTrigger: { trigger: '.company-card', start: 'top 85%' }
+  }
+);
+
+// Contact form
+gsap.fromTo('.contact-form',
+  { opacity: 0, y: 40 },
+  {
+    opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+    scrollTrigger: { trigger: '.contact-form', start: 'top 85%' }
+  }
+);
+
+// Big rating number count up
+ScrollTrigger.create({
+  trigger: '.big-rating',
+  start: 'top 80%',
+  once: true,
+  onEnter: () => {
+    const el = document.querySelector('.big-rating');
+    let v = 0;
+    const iv = setInterval(() => {
+      v += 0.1;
+      if (v >= 3.1) { el.textContent = '3.1'; clearInterval(iv); }
+      else el.textContent = v.toFixed(1);
+    }, 40);
+  }
+});
+</script>
+</body>
+</html>
