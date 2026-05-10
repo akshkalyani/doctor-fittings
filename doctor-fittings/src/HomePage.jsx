@@ -561,7 +561,7 @@ function InstagramCarousel() {
         {/* Mobile: single card */}
         <div className="sm:hidden">
           <a
-            href="https://www.instagram.com/doctor_fittings/"
+            href="https://www.instagram.com/doctorfittings/"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative aspect-square rounded-2xl overflow-hidden shadow-md no-underline block"
